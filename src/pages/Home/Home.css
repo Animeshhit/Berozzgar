@@ -1,0 +1,64 @@
+.arrow_one {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 250px;
+}
+.arrow_one img {
+  position: relative;
+  left: -75%;
+  height: 100%;
+}
+.arrow_two {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px;
+}
+.arrow_two img {
+  height: 100%;
+  position: relative;
+  left: -65%;
+}
+
+.arrow_three {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 350px;
+}
+.arrow_three img {
+  height: 100%;
+  position: relative;
+  left: 2px;
+}
+
+.arrow_four {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px;
+}
+
+.arrow_four img {
+  height: 100%;
+  position: relative;
+  left: 75%;
+}
+
+.btn {
+  left: -100%;
+}
+.arrow_two .btn {
+  left: -80%;
+}
+
+.arrow_three .btn {
+  width: 140px;
+  transform: translateX(-40%);
+}
+
+.arrow_four .btn {
+  width: 150px;
+  left: 130%;
+}
