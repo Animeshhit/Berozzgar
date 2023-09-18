@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./Register/Register";
 import Welcome from "./pages/Welcome/Welcome";
+import "nothing0";
 
 const App = () => {
   return (
