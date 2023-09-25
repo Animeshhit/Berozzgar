@@ -53,7 +53,7 @@ const Navbar = () => {
                     <button
                       id="dropdownAvatarNameButton"
                       data-dropdown-toggle="dropdownAvatarName"
-                      className="flex items-center text-sm py-3 font-medium text-gray-900 rounded-full hover:text-zinc-800 dark:hover:text-blue-500 md:mr-0 dark:text-white"
+                      className="flex items-center text-xs sm:text-sm py-2 font-medium text-gray-900 rounded-full hover:text-zinc-800 dark:hover:text-blue-500 md:mr-0 dark:text-white"
                       type="button"
                       onClick={() => {
                         setIsOpen(!isOpen);
@@ -61,11 +61,10 @@ const Navbar = () => {
                     >
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="w-8 h-8 mr-2 rounded-full object-cover"
+                        className="w-8 h-8 mr-1 rounded-full object-cover"
                         src="./profile.jpg"
                         alt="user photo"
                       />
-                      Animesh kumbhakar
                       <svg
                         className="w-2.5 h-2.5 ml-2.5"
                         aria-hidden="true"
@@ -87,7 +86,7 @@ const Navbar = () => {
                       id="dropdownAvatarName"
                       className={`z-10 ${
                         isOpen ? "" : "hidden"
-                      } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute top-20 dark:bg-gray-700 dark:divide-gray-600`}
+                      } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute right-0 top-20 dark:bg-gray-700 dark:divide-gray-600`}
                     >
                       <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                         <div className="truncate">name@flowbite.com</div>
@@ -128,7 +127,7 @@ const Navbar = () => {
                 <NavLink to={"/auth/login"}>
                   <button
                     type="button"
-                    className="py-3 flex items-center justify-center gap-1 text-xs sm:text-sm bg-zinc-800 text-white px-12  dark:text-white  dark:bg-white dark:text-zinc-800  text-white rounded-full transition"
+                    className="py-2 flex items-center justify-center gap-1 text-xs sm:text-sm bg-zinc-800 text-white sm:px-12 px-6 dark:text-white  dark:bg-white dark:text-zinc-800  text-white rounded-full transition"
                   >
                     Log in
                     <span className="material-symbols-outlined">login</span>

@@ -62,3 +62,13 @@
   width: 150px;
   left: 130%;
 }
+
+/* for mobile device  */
+
+.indexStyles {
+  position: absolute;
+  font-size: 6rem;
+  color: rgba(0, 0, 0, 0.2);
+  left: 5%;
+  top: -15%;
+}
