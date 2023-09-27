@@ -1,6 +1,51 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { LoginUser } from "../../state/actions/action";
+import { useState } from "react";
+import { BaseUrl } from "../../config/apiConfig";
 
 export default function Login() {
+  const navigate = useNavigate();
+  //dispatch of redux
+  const dispatch = useDispatch();
+  //store the user data for login
+  const [userData, setUserData] = useState({
+    userEmail: "",
+    password: "",
+  });
+
+  //handleChange function for user input
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
+  //handleSubmit function
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { userEmail, password } = userData;
+    if (!userEmail || !password) {
+      alert("Fill The Details Properly");
+      return;
+    }
+    const REQ = await fetch(`${BaseUrl}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+    const RES = await REQ.json();
+    if (REQ.status == 200) {
+      localStorage.setItem("Engine_Token", RES.token);
+      dispatch(LoginUser({ auth: true, ...RES.user }));
+      alert("Login Done");
+      navigate("/");
+    } else {
+      alert(RES.message);
+    }
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +56,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -22,9 +67,11 @@ export default function Login() {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
+                  name="userEmail"
                   type="email"
-                  autoComplete="email"
+                  onChange={handleChange}
+                  autoComplete="username"
+                  value={userData.userEmail}
                   required
                   className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -45,6 +92,8 @@ export default function Login() {
                   id="password"
                   name="password"
                   type="password"
+                  onChange={handleChange}
+                  value={userData.password}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -60,7 +109,7 @@ export default function Login() {
                 Sign in
               </button>
               <button
-                type="submit"
+                type="button"
                 className="flex mt-6 py-2 w-full justify-center rounded-md bg-white flex items-center px-3 py-1.5 text-sm font-semibold leading-6 text-zinc-800 gap-2 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition"
               >
                 <img className="w-5 h-5" src="/logo-google.svg" alt="google" />

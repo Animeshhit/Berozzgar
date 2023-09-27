@@ -3,24 +3,19 @@ import changeTheme from "../../helper";
 import { LIGHT, DARK } from "../../helper";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../state/actions/action";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(LIGHT);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
+  const isAuth = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (localStorage.getItem("theme")) {
-      if (localStorage.getItem("theme") == "light") {
-        setTheme(DARK);
-      } else {
-        setTheme(LIGHT);
-      }
-    } else {
-      localStorage.setItem("theme", "light");
-      setTheme(LIGHT);
-    }
-  }, []);
+  console.log(isAuth);
+  const [theme, setTheme] = useState(LIGHT);
+  const dispatch = useDispatch();
+  //loggedin user data
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = () => {
     changeTheme(setTheme);
@@ -40,14 +35,9 @@ const Navbar = () => {
               </span>
             </NavLink>
             <div className="flex items-center gap-2">
-              {/* <button
-                type="button"
-                onClick={handleChange}
-                className="p-3 flex items-center justify-center text-sm  text-zinc-800 dark:text-white dark:hover:bg-white dark:hover:text-zinc-800  rounded-full transition hover:bg-zinc-800 hover:text-white"
-              >
-                <span className="material-symbols-outlined">{theme.icon}</span>
-              </button> */}
-              {isLoggedIn ? (
+              {isAuth.auth == null ? (
+                "Loading..."
+              ) : isAuth.auth ? (
                 <>
                   <div className="relative">
                     <button
@@ -62,7 +52,7 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="w-8 h-8 mr-1 rounded-full object-cover"
-                        src="./profile.jpg"
+                        src={isAuth.profileImage}
                         alt="user photo"
                       />
                       <svg
@@ -89,7 +79,7 @@ const Navbar = () => {
                       } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute right-0 top-20 dark:bg-gray-700 dark:divide-gray-600`}
                     >
                       <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                        <div className="truncate">name@flowbite.com</div>
+                        <div className="truncate">{isAuth.userEmail}</div>
                       </div>
                       <ul
                         className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -112,13 +102,21 @@ const Navbar = () => {
                           </a>
                         </li>
                       </ul>
-                      <div className="py-2">
-                        <a
+                      <div
+                        className="py-2"
+                        onClick={() => {
+                          localStorage.removeItem("Engine_Token");
+                          dispatch(getUser({ auth: false }));
+                          alert("Log Out Done");
+                          setIsOpen(!isOpen);
+                        }}
+                      >
+                        <p
                           href="#"
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                         >
                           Sign out
-                        </a>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -127,7 +125,7 @@ const Navbar = () => {
                 <NavLink to={"/auth/login"}>
                   <button
                     type="button"
-                    className="py-2 flex items-center justify-center gap-1 text-xs sm:text-sm bg-zinc-800 text-white sm:px-12 px-6 dark:text-white  dark:bg-white dark:text-zinc-800  text-white rounded-full transition"
+                    className="py-2 sm:py-3 flex items-center justify-center gap-1 text-xs sm:text-sm bg-zinc-800 text-white sm:px-12 px-6 dark:text-white  dark:bg-white dark:text-zinc-800  text-white rounded-full transition"
                   >
                     Log in
                     <span className="material-symbols-outlined">login</span>
@@ -138,17 +136,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* <div className="navbar">
-        <div className="navbar-Logo">
-          <h4>Berozgar</h4>
-          <h5>Engineerers</h5>
-        </div>
-        <div className="navbar-details">
-          <button id="logIn">
-            <a href="#">Log In</a>
-          </button>
-        </div>
-      </div> */}
     </>
   );
 };
