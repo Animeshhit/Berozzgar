@@ -4,9 +4,10 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BaseUrl } from "../config/apiConfig";
+
 const View = () => {
   const { id, sem } = useParams();
-  const [File, setFile] = useState("null");
+  const [File, setFile] = useState("/loading.pdf");
   const getFile = async () => {
     let token = localStorage.getItem("Engine_Token");
     let APIREQ = await fetch(
