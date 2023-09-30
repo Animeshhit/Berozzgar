@@ -5,14 +5,16 @@ import SubjectHeading from "../../components/Subject/SubjectHeading";
 import { Syllabus } from "../../config/Syllubus";
 //redux
 
-function Year() {
+function Year({ progress }) {
   const { id } = useParams();
   const [currentDataOne, setCurrentDataOne] = useState(null);
   const [currentDataTwo, setCurrentDataTwo] = useState(null);
 
   useEffect(() => {
     setCurrentDataOne(Syllabus[id][1]);
+    progress(50);
     setCurrentDataTwo(Syllabus[id][2]);
+    progress(100);
   }, [id]);
 
   return (
@@ -66,6 +68,7 @@ function Year() {
                   name={`${item.SubjectName} (${item.SubjectCode})`}
                   sem={id == 1 ? 1 : id == 2 ? 3 : id == 3 ? 5 : 7}
                   code={item.SubjectCode}
+                  progress={progress}
                 />
               );
             })}
@@ -81,6 +84,7 @@ function Year() {
                   name={`${item.SubjectName} (${item.SubjectCode})`}
                   sem={id == 1 ? 1 : id == 2 ? 3 : id == 3 ? 5 : 7}
                   code={item.SubjectCode}
+                  progress={progress}
                 />
               );
             })}
@@ -133,6 +137,7 @@ function Year() {
                   name={`${item.SubjectName} (${item.SubjectCode})`}
                   sem={id == 1 ? 2 : id == 2 ? 4 : id == 3 ? 6 : 8}
                   code={item.SubjectCode}
+                  progress={progress}
                 />
               );
             })}
@@ -151,6 +156,7 @@ function Year() {
                   name={`${item.SubjectName} (${item.SubjectCode})`}
                   sem={id == 1 ? 2 : id == 2 ? 4 : id == 3 ? 6 : 8}
                   code={item.SubjectCode}
+                  progress={progress}
                 />
               );
             })}

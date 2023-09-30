@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { LoginUser } from "../../state/actions/action";
 import { useState } from "react";
 import { BaseUrl } from "../../config/apiConfig";
+import { toast } from "react-toastify";
 
-export default function Login() {
+export default function Login({ progress }) {
   const navigate = useNavigate();
   //dispatch of redux
   const dispatch = useDispatch();
@@ -25,9 +26,10 @@ export default function Login() {
     e.preventDefault();
     const { userEmail, password } = userData;
     if (!userEmail || !password) {
-      alert("Fill The Details Properly");
+      toast.warn("Please Fill The Form Properly 😕");
       return;
     }
+    progress(30);
     const REQ = await fetch(`${BaseUrl}/login`, {
       method: "POST",
       headers: {
@@ -39,11 +41,14 @@ export default function Login() {
     if (REQ.status == 200) {
       localStorage.setItem("Engine_Token", RES.token);
       dispatch(LoginUser({ auth: true, ...RES.user }));
-      alert("Login Done");
+      toast.success("You Are Logged In 🚀");
+      progress(50);
       navigate("/");
     } else {
-      alert(RES.message);
+      progress(50);
+      toast.error(RES.message);
     }
+    progress(100);
   };
 
   return (

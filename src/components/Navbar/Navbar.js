@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../state/actions/action";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.auth);
@@ -103,11 +104,11 @@ const Navbar = () => {
                         </li>
                       </ul>
                       <div
-                        className="py-2"
+                        className="py-2 cursor-pointer"
                         onClick={() => {
                           localStorage.removeItem("Engine_Token");
                           dispatch(getUser({ auth: false }));
-                          alert("Log Out Done");
+                          toast.success("You are Logged Out!!");
                           setIsOpen(!isOpen);
                         }}
                       >

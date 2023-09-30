@@ -1,7 +1,7 @@
 import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Layout from "./Layout";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Welcome from "./pages/Welcome/Welcome";
@@ -9,12 +9,21 @@ import Year from "./pages/year/Year";
 import { BaseUrl } from "./config/apiConfig";
 import Admin from "./pages/Admin/Admin";
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./state/actions/action";
 import { useEffect } from "react";
 import View from "./View/View";
+// react top loading bar
+import LoadingBar from "react-top-loading-bar";
+import { useState } from "react";
+
+//react toastify imple
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const [progress, setProgress] = useState(0);
+  const isAuth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const getCurrentUser = async () => {
     let token = localStorage.getItem("Engine_Token");
@@ -36,16 +45,46 @@ const App = () => {
   }, []);
   return (
     <>
+      <LoadingBar
+        color="#279EFF"
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+        height={3}
+      />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Navbar />
       <Layout>
         <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/register" element={<Register />} />
-          <Route path="/year/:id" element={<Year />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/view/:id/:sem" element={<View />} />
+          <Route path="/" element={<Welcome progress={setProgress} />} />
+          <Route path="/home" element={<Home Lprogress={setProgress} />} />
+          <Route
+            path="/auth/login"
+            element={<Login progress={setProgress} />}
+          />
+          <Route
+            path="/auth/register"
+            element={<Register progress={setProgress} />}
+          />
+          <Route path="/year/:id" element={<Year progress={setProgress} />} />
+          <Route
+            path="/admin"
+            element={isAuth.auth ? <Admin progress={setProgress} /> : <Home />}
+          />
+          <Route
+            path="/view/:id/:sem"
+            element={<View Lprogress={setProgress} />}
+          />
         </Routes>
       </Layout>
     </>

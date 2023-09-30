@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-const Welcome = () => {
+const Welcome = ({ progress }) => {
+  useEffect(() => {
+    progress(100);
+  }, []);
   return (
     <>
       <section className="h-full my-6 sm:my-24 w-full">

@@ -3,6 +3,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/fireabase";
 import { BaseUrl } from "../../config/apiConfig";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const InputBox = ({ Id, Label, Name, Value, Change, PlaceHolder }) => {
   return (
@@ -24,7 +25,7 @@ const InputBox = ({ Id, Label, Name, Value, Change, PlaceHolder }) => {
   );
 };
 
-const Admin = () => {
+const Admin = ({ Lprogress }) => {
   const CurrntUserData = useSelector((state) => state.auth);
   const [FileUploadStatus, setFileUploadStatus] = useState({
     uploading: false,
@@ -48,6 +49,7 @@ const Admin = () => {
   //for server uploading
 
   const UploadNotes = async (url) => {
+    Lprogress(20);
     let APIREQ = await fetch(`${BaseUrl}/upload-notes`, {
       method: "POST",
       headers: {
@@ -59,15 +61,17 @@ const Admin = () => {
         uploadedBy: CurrntUserData.userEmail,
       }),
     });
+    Lprogress(50);
     let APIRES = await APIREQ.json();
     if (APIREQ.status == 200) {
-      alert(APIRES.message);
+      toast.success(APIRES.message);
       setFileUploadStatus({
         uploading: false,
         progress: 0,
       });
       setNotesData(initValue);
     }
+    Lprogress(100);
   };
 
   const submit = (e) => {
@@ -221,9 +225,10 @@ const Admin = () => {
             </div>
             <button
               type="submit"
+              disabled={FileUploadStatus.uploading}
               className="block mx-auto w-full max-w-md py-2 px-4 mt-8 transition bg-zinc-800 text-white hover:bg-zinc-600 rounded-md border-2"
             >
-              Upload
+              {FileUploadStatus.uploading ? "Loading..." : "Upload"}
             </button>
           </div>
         </form>

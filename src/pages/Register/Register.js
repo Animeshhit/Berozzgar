@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { RegisterUser } from "../../state/actions/action";
 import { useState } from "react";
 import { BaseUrl } from "../../config/apiConfig";
+import { toast } from "react-toastify";
 
-export default function Register() {
+export default function Register({ progress }) {
   const navigate = useNavigate();
   //dispatch of redux
   const dispatch = useDispatch();
@@ -26,9 +27,10 @@ export default function Register() {
     e.preventDefault();
     const { userEmail, password } = userData;
     if (!userEmail || !password) {
-      alert("Fill The Details Properly");
+      toast.warn("Please Fill The Form Properly 😕");
       return;
     }
+    progress(20);
     const REQ = await fetch(`${BaseUrl}/register`, {
       method: "POST",
       headers: {
@@ -40,11 +42,14 @@ export default function Register() {
     if (REQ.status == 200) {
       localStorage.setItem("Engine_Token", RES.token);
       dispatch(RegisterUser({ auth: true, ...RES.user }));
-      alert("User Registered");
+      progress(50);
+      toast.success("User Registration Done!! 🚀");
       navigate("/");
     } else {
-      alert(RES.message);
+      progress(50);
+      toast.error(RES.message);
     }
+    progress(100);
   };
 
   return (

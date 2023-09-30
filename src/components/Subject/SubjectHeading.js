@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { BaseUrl } from "../../config/apiConfig";
 import Subject from "./Subject";
-const SubjectHeading = ({ name, sem, code }) => {
+const SubjectHeading = ({ name, sem, code, progress }) => {
   const [dropDown, setDropDown] = useState(false);
   const [data, setData] = useState(null);
   const getSubjectsAndData = async () => {
+    progress(50);
     try {
       let APIREQ = await fetch(`${BaseUrl}/subject?code=${code}&sem=${sem}`);
       let APIRES = await APIREQ.json();
@@ -13,6 +14,7 @@ const SubjectHeading = ({ name, sem, code }) => {
     } catch (err) {
       alert(err.message);
     }
+    progress(100);
   };
   const openDropDown = () => {
     if (dropDown) {

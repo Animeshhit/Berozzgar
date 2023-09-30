@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BaseUrl } from "../config/apiConfig";
 
-const View = () => {
+const View = ({ Lprogress }) => {
   const { id, sem } = useParams();
   const [File, setFile] = useState("/loading.pdf");
   const getFile = async () => {
+    Lprogress(40);
     let token = localStorage.getItem("Engine_Token");
     let APIREQ = await fetch(
       `${BaseUrl}/notesofsem?sem=${sem}&api_key=${token}`
@@ -21,6 +22,7 @@ const View = () => {
         "https://firebasestorage.googleapis.com/v0/b/berozgar-1725c.appspot.com/o/NO%20Access.pdf?alt=media&token=1b850de3-21b7-4fbe-8a4d-aed9c48a7517&_gl=1*3i2sri*_ga*MTg5OTM0OTA4LjE2OTE4NTM3OTQ.*_ga_CW55HF8NVT*MTY5NTg0NDcyMy43LjEuMTY5NTg0NDgyMS4yNC4wLjA."
       );
     }
+    Lprogress(100);
   };
   useEffect(() => {
     getFile();
