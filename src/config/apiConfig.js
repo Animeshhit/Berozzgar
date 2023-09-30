@@ -1,4 +1,4 @@
-const PORT = "5040";
+const PORT = "3030";
 // export const BaseUrl = `http://localhost:${PORT}/api/v1`;
 
 export const BaseUrl = "https://berozzgar-backend.vercel.app/api/v1";
