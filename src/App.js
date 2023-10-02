@@ -32,7 +32,6 @@ const App = () => {
       let REQ = await fetch(`${BaseUrl}/user?api_key=${token}`);
       let RES = await REQ.json();
       if (REQ.status == 200) {
-        console.log(RES.user);
         dispatch(getUser({ auth: true, ...RES.user }));
       } else {
         dispatch(getUser({ auth: false, user: null }));
@@ -42,6 +41,7 @@ const App = () => {
     }
   };
   useEffect(() => {
+    console.clear();
     getCurrentUser();
   }, []);
   return (
