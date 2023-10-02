@@ -19,6 +19,7 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
   const openDropDown = () => {
     if (dropDown) {
       setDropDown(false);
+      setData(null);
     } else {
       setDropDown(true);
       getSubjectsAndData();
