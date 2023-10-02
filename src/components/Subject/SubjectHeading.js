@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BaseUrl } from "../../config/apiConfig";
 import Subject from "./Subject";
+
 const SubjectHeading = ({ name, sem, code, progress }) => {
   const [dropDown, setDropDown] = useState(false);
   const [data, setData] = useState(null);

@@ -15,7 +15,10 @@ const Links = ({ href, title, index }) => {
   );
 };
 
-const Home = () => {
+const Home = ({ Lprogress }) => {
+  useEffect(() => {
+    Lprogress(100);
+  }, []);
   return (
     <>
       <div className="w-full h-full">

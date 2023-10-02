@@ -77,10 +77,7 @@ const App = () => {
             element={<Register progress={setProgress} />}
           />
           <Route path="/year/:id" element={<Year progress={setProgress} />} />
-          <Route
-            path="/admin"
-            element={isAuth.auth ? <Admin progress={setProgress} /> : <Home />}
-          />
+          <Route path="/admin" element={<Admin progress={setProgress} />} />
           <Route
             path="/view/:id/:sem"
             element={<View Lprogress={setProgress} />}
