@@ -115,7 +115,7 @@ export default function Login({ progress }) {
               </button>
               <button
                 type="button"
-                className="flex mt-6 py-2 w-full justify-center rounded-md bg-white flex items-center px-3 py-1.5 text-sm font-semibold leading-6 text-zinc-800 gap-2 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition"
+                className="hidden mt-6 py-2 w-full justify-center rounded-md bg-white flex items-center px-3 py-1.5 text-sm font-semibold leading-6 text-zinc-800 gap-2 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition"
               >
                 <img className="w-5 h-5" src="/logo-google.svg" alt="google" />
                 Join With Google
