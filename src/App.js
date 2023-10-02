@@ -8,6 +8,7 @@ import Welcome from "./pages/Welcome/Welcome";
 import Year from "./pages/year/Year";
 import { BaseUrl } from "./config/apiConfig";
 import Admin from "./pages/Admin/Admin";
+import { Navigate } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./state/actions/action";
@@ -30,8 +31,8 @@ const App = () => {
     if (token) {
       let REQ = await fetch(`${BaseUrl}/user?api_key=${token}`);
       let RES = await REQ.json();
-      console.log(REQ.status, RES.user);
       if (REQ.status == 200) {
+        console.log(RES.user);
         dispatch(getUser({ auth: true, ...RES.user }));
       } else {
         dispatch(getUser({ auth: false, user: null }));
@@ -77,7 +78,29 @@ const App = () => {
             element={<Register progress={setProgress} />}
           />
           <Route path="/year/:id" element={<Year progress={setProgress} />} />
-          <Route path="/admin" element={<Admin progress={setProgress} />} />
+          <Route
+            path="/admin"
+            element={
+              isAuth.auth == null ? (
+                <>
+                  <div className="container mx-auto px-4 py-6">
+                    <h2 className="text-center my-12 capitalize text-zinc-800 text-xl">
+                      Loading Admin Info Please Wait...
+                    </h2>
+                  </div>
+                </>
+              ) : isAuth.auth ? (
+                isAuth.userEmail == "animeshkum723126@gmail.com" ||
+                isAuth.userEmail == "souravhit2226@gmail.com" ? (
+                  <Admin progress={setProgress} />
+                ) : (
+                  <Navigate to="/home" />
+                )
+              ) : (
+                <Navigate to="/home" />
+              )
+            }
+          />
           <Route
             path="/view/:id/:sem"
             element={<View Lprogress={setProgress} />}

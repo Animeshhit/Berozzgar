@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const isAuth = useSelector((state) => state.auth);
 
-  console.log(isAuth);
   const [theme, setTheme] = useState(LIGHT);
   const dispatch = useDispatch();
   //loggedin user data
