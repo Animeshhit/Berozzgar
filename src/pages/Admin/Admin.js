@@ -25,7 +25,7 @@ const InputBox = ({ Id, Label, Name, Value, Change, PlaceHolder }) => {
   );
 };
 
-const Admin = ({ Lprogress }) => {
+const Admin = ({ progress }) => {
   const CurrntUserData = useSelector((state) => state.auth);
   const [FileUploadStatus, setFileUploadStatus] = useState({
     uploading: false,
@@ -49,7 +49,7 @@ const Admin = ({ Lprogress }) => {
   //for server uploading
 
   const UploadNotes = async (url) => {
-    Lprogress(20);
+    progress(20);
     let APIREQ = await fetch(`${BaseUrl}/upload-notes`, {
       method: "POST",
       headers: {
@@ -61,7 +61,7 @@ const Admin = ({ Lprogress }) => {
         uploadedBy: CurrntUserData.userEmail,
       }),
     });
-    Lprogress(50);
+    progress(50);
     let APIRES = await APIREQ.json();
     if (APIREQ.status == 200) {
       toast.success(APIRES.message);
@@ -71,7 +71,7 @@ const Admin = ({ Lprogress }) => {
       });
       setNotesData(initValue);
     }
-    Lprogress(100);
+    progress(100);
   };
 
   const submit = (e) => {
