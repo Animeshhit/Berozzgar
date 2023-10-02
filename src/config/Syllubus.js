@@ -111,7 +111,7 @@ export const Syllabus = {
           SubjectCode: "PC-EE 392",
         },
         {
-          SubjectName: "BNumerical Methods Lab",
+          SubjectName: "Numerical Methods Lab",
           SubjectCode: "PC-CS 391",
         },
       ],
