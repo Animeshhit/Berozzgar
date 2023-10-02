@@ -105,6 +105,7 @@ const App = () => {
             path="/view/:id/:sem"
             element={<View Lprogress={setProgress} />}
           />
+          <Route path="/*" element={<Navigate to={"/"} />} />
         </Routes>
       </Layout>
     </>
