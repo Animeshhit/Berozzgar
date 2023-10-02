@@ -49,8 +49,12 @@ const Admin = ({ progress }) => {
   //for server uploading
 
   const UploadNotes = async (url) => {
+    let token = localStorage.getItem("Engine_Token");
+    if (!token) {
+      return alert("you have no access to do perform this action");
+    }
     progress(20);
-    let APIREQ = await fetch(`${BaseUrl}/upload-notes`, {
+    let APIREQ = await fetch(`${BaseUrl}/upload-notes?api_key=${token}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
