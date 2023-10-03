@@ -47,15 +47,15 @@
 }
 
 .btn {
-  left: -100%;
+  left: -103%;
 }
 .arrow_two .btn {
-  left: -80%;
+  left: -85%;
 }
 
 .arrow_three .btn {
   width: 140px;
-  transform: translateX(-40%);
+  transform: translateX(-35%);
 }
 
 .arrow_four .btn {
