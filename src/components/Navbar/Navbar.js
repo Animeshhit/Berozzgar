@@ -87,7 +87,7 @@ const Navbar = () => {
                       >
                         <li
                           onClick={() => {
-                            alert("Send Your Email to sourav");
+                            alert("Send Your Registered Email To Sourav Majee");
                           }}
                         >
                           <a
@@ -101,10 +101,17 @@ const Navbar = () => {
                       <div
                         className="py-2 cursor-pointer"
                         onClick={() => {
-                          localStorage.removeItem("Engine_Token");
-                          dispatch(getUser({ auth: false }));
-                          toast.success("You are Logged Out!!");
-                          setIsOpen(!isOpen);
+                          let wantToLogOut = window.confirm(
+                            "Are You Sure To Log Out ?"
+                          );
+                          if (wantToLogOut) {
+                            localStorage.removeItem("Engine_Token");
+                            dispatch(getUser({ auth: false }));
+                            toast.success("You are Logged Out!!");
+                            setIsOpen(!isOpen);
+                          } else {
+                            setIsOpen(false);
+                          }
                         }}
                       >
                         <p

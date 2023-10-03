@@ -66,12 +66,12 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
               })
             ) : (
               <span className="px-6 text-sm text-zinc-400">
-                No Notes Till Now...
+                Working on It 🚀🚀...
               </span>
             )
           ) : (
             <span className="px-6 text-sm text-zinc-400">
-              Loading Please Wait...
+              Loading Please Wait 🤞...
             </span>
           )}
         </div>
