@@ -24,10 +24,10 @@ const Home = ({ Lprogress }) => {
       <div className="w-full h-full">
         <div className="container mx-auto px-4">
           {/* for desktop user  */}
-          <div className="w-full hidden md:block abosolute mt-12">
+          <div className="w-full hidden md:block abosolute mt-12 mb-36">
             <button
               type="button"
-              className="block mx-auto py-3 px-12 bg-zinc-800 text-white dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full hover:bg-zinc-600 transition"
+              className="block mx-auto py-2.5 px-12 bg-zinc-800 text-white dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full hover:bg-zinc-600 transition"
             >
               Engineering
             </button>
@@ -36,7 +36,7 @@ const Home = ({ Lprogress }) => {
               <NavLink
                 to={"/year/1"}
                 type="button"
-                className="py-3 text-center border-2 border-red dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute btn"
+                className="py-2.5 text-center border-2 border-red dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute btn"
               >
                 First Year
               </NavLink>
@@ -46,7 +46,7 @@ const Home = ({ Lprogress }) => {
               <NavLink
                 to={"/year/2"}
                 type="button"
-                className="py-3 text-center dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute btn"
+                className="py-2.5 text-center dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute btn"
               >
                 Second Year
               </NavLink>
@@ -56,7 +56,7 @@ const Home = ({ Lprogress }) => {
               <NavLink
                 to={"/year/3"}
                 type="button"
-                className="py-3 text-center dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute cursor-pointer btn"
+                className="py-2.5 text-center dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute cursor-pointer btn"
               >
                 Third Year
               </NavLink>
@@ -66,7 +66,7 @@ const Home = ({ Lprogress }) => {
               <NavLink
                 to={"/year/4"}
                 type="button"
-                className="py-3 text-center dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute btn"
+                className="py-2.5 text-center dark:text-zinc-800 dark:bg-white dark:hover:bg-gray-400 rounded-full px-6 hover:bg-zinc-600 transition bg-zinc-800 text-white absolute btn"
               >
                 Fourth Year
               </NavLink>
