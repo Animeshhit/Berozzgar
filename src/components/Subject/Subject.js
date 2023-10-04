@@ -14,7 +14,7 @@ const Subject = (props) => {
             auto_stories
           </span>
 
-          <span className="text-xs sm:text-base">{props.name}</span>
+          <span className="text-xs sm:text-base capitalize">{props.name}</span>
         </div>
         <button
           title="click To View"

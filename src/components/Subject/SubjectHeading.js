@@ -35,7 +35,9 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
               auto_stories
             </span>
 
-            <span className="text-xs font-semibold sm:text-base">{name}</span>
+            <span className="text-xs font-semibold sm:text-base capitalize">
+              {name}
+            </span>
           </div>
           <button
             onClick={openDropDown}
