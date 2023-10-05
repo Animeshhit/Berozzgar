@@ -37,7 +37,7 @@ const Admin = ({ progress }) => {
     chapterName: "",
     subjectType: "Theory",
     sem: "1",
-    File: "null",
+    File: null,
     // uploadedBy: "animeshkum7",
   };
   const [NotesData, setNotesData] = useState(initValue);
@@ -133,6 +133,7 @@ const Admin = ({ progress }) => {
               Name="subjectName"
               Value={NotesData.subjectName}
               Change={handleChange}
+              autoComplete="Subject Name"
             />
             <InputBox
               Id={"Code"}
@@ -141,6 +142,7 @@ const Admin = ({ progress }) => {
               Name="subjectCode"
               Value={NotesData.subjectCode}
               Change={handleChange}
+              autoComplete="Subject Code"
             />
             <InputBox
               Id={"Chapter"}
@@ -149,6 +151,7 @@ const Admin = ({ progress }) => {
               Name="chapterName"
               Value={NotesData.chapterName}
               Change={handleChange}
+              autoComplete="Chapter Name"
             />
             {/* for subject type  */}
             <div className="flex my-5 items-center max-w-md mx-auto gap-4">
