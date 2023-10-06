@@ -22,7 +22,6 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Hood from "./components/hood/Hood";
-import ShowCase from "./components/ShowCase/ShowCase";
 const App = () => {
   const [progress, setProgress] = useState(0);
   const isAuth = useSelector((state) => state.auth);
@@ -112,7 +111,7 @@ const App = () => {
           <Route path="/*" element={<Navigate to={"/"} />} />
         </Routes>
       </Layout>
-      <ShowCase />
+      
     </>
   );
 };

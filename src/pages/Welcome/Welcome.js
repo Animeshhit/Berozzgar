@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import ShowCase from "../../components/ShowCase/ShowCase";
 
 const Welcome = ({ progress }) => {
   useEffect(() => {
@@ -34,6 +35,7 @@ const Welcome = ({ progress }) => {
           </div>
         </div>
       </section>
+      <ShowCase />
     </>
   );
 };
