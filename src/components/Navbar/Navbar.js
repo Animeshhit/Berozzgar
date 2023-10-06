@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import changeTheme from "../../helper";
 import { LIGHT, DARK } from "../../helper";
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../state/actions/action";
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const [theme, setTheme] = useState(LIGHT);
   const dispatch = useDispatch();
@@ -108,6 +109,7 @@ const Navbar = () => {
                             localStorage.removeItem("Engine_Token");
                             dispatch(getUser({ auth: false }));
                             toast.success("You are Logged Out!!");
+                            navigate("/", { replace: true });
                             setIsOpen(!isOpen);
                           } else {
                             setIsOpen(false);
