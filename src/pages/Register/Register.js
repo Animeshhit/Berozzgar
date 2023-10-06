@@ -33,6 +33,7 @@ export default function Register({ progress }) {
     }
     if (password !== cpassword) {
       toast.warn("password And Confirm Password Should Be Same 🤞");
+      return;
     }
     progress(20);
     const REQ = await fetch(`${BaseUrl}/register`, {
