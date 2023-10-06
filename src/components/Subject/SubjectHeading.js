@@ -76,7 +76,7 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
             )
           ) : (
             <span className="px-6 text-sm text-zinc-400">
-              Sabar karo Thora Sa 😉 Garib server hai Humlogo ka..
+              Sabar karo Thora Sa 😉..
             </span>
           )}
         </div>
