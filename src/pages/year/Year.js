@@ -1,8 +1,9 @@
 import Motivation from "../../components/Motivation/Motivation";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SubjectHeading from "../../components/Subject/SubjectHeading";
 import { Syllabus } from "../../config/Syllubus";
+import ShowCase from "../../components/ShowCase/ShowCase";
 //redux
 
 function Year({ progress }) {
@@ -23,10 +24,10 @@ function Year({ progress }) {
         <div className="container mx-auto px-4 mt-6">
           {/* breadcrumb  */}
           <div className="breadcrumb flex text-sm sm:text-base py-1 shadow-lg w-max bg-white text-zinc-500 px-1 rounded-md">
-            <a href="#" className="flex items-center gap-1">
+            <NavLink to="/home" className="flex items-center gap-1">
               <span class="material-symbols-outlined">home</span>
               <span>Home</span>
-            </a>
+            </NavLink>
 
             <a href="#" className="flex items-center">
               <span class="material-symbols-outlined">chevron_right</span>
@@ -58,7 +59,7 @@ function Year({ progress }) {
             <span class="material-symbols-outlined Th_Pra_icon">
               export_notes
             </span>
-            <span>Theory :</span>
+            <span className="font-semibold">Theory :</span>
           </div>
           {/* subjects  */}
           {currentDataOne &&
@@ -75,7 +76,7 @@ function Year({ progress }) {
           {/* subject heading  */}
           <div className="my-12 flex items-center gap-1">
             <span class="material-symbols-outlined Th_Pra_icon">science</span>
-            <span>Practical :</span>
+            <span className="font-semibold">Practical :</span>
           </div>
           {currentDataOne &&
             currentDataOne.Lab.map((item) => {
@@ -90,10 +91,10 @@ function Year({ progress }) {
             })}
           {/* other sem  */}
           <div className="breadcrumb  text-sm sm:text-base my-14 flex py-1 shadow-lg w-max bg-white text-zinc-500 px-1 rounded-md">
-            <a href="#" className="flex items-center gap-1">
+            <NavLink to="/home" className="flex items-center gap-1">
               <span class="material-symbols-outlined">home</span>
               <span>Home</span>
-            </a>
+            </NavLink>
 
             <a href="#" className="flex items-center">
               <span class="material-symbols-outlined">chevron_right</span>
@@ -126,7 +127,7 @@ function Year({ progress }) {
             <span class="material-symbols-outlined Th_Pra_icon">
               export_notes
             </span>
-            <span>Theory :</span>
+            <span className="font-semibold">Theory :</span>
           </div>
 
           {/* subjects  */}
@@ -146,7 +147,7 @@ function Year({ progress }) {
             <span class="material-symbols-outlined Th_Pra_icon">
               export_notes
             </span>
-            <span>Practical :</span>
+            <span className="font-semibold">Practical :</span>
           </div>
           {/* subjects  */}
           {currentDataTwo &&
@@ -163,7 +164,9 @@ function Year({ progress }) {
         </div>
       </div>
 
-      <Motivation />
+      <div className="mt-24">
+        <ShowCase />
+      </div>
     </>
   );
 }

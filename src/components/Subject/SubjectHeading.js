@@ -29,7 +29,10 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
   return (
     <>
       <div className="w-full my-4">
-        <div className="flex rounded-full shadow-lg items-center justify-between  py-3 px-4 bg-white gap-2">
+        <div
+          onClick={openDropDown}
+          className="flex rounded-full bg-2 cursor-pointer shadow-lg items-center justify-between  py-3 px-4 bg-white gap-2"
+        >
           <div className="left_info flex items-center gap-2">
             <span class="material-symbols-outlined auto_stories">
               auto_stories
@@ -42,7 +45,7 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
           <button
             onClick={openDropDown}
             type="button"
-            className="flex items-center justify-center"
+            className="flex items-center cursor-pointer justify-center"
           >
             <span class="material-symbols-outlined">
               {dropDown ? "expand_less" : "expand_more"}
@@ -68,12 +71,12 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
               })
             ) : (
               <span className="px-6 text-sm text-zinc-400">
-                Working on It 🚀🚀...
+                Notes Will Be Available Soon 🚀🚀
               </span>
             )
           ) : (
             <span className="px-6 text-sm text-zinc-400">
-              Loading Please Wait 🤞...
+              Sabar karo Thora Sa 😉 Garib server hai Humlogo ka..
             </span>
           )}
         </div>
