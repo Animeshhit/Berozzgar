@@ -91,7 +91,8 @@ const App = () => {
                 </>
               ) : isAuth.auth ? (
                 isAuth.userEmail == "animeshkum723126@gmail.com" ||
-                isAuth.userEmail == "souravhit2226@gmail.com" ? (
+                isAuth.userEmail == "souravhit2226@gmail.com" ||
+                isAuth.userEmail == "saikatmalik234@gmail.com" ? (
                   <Admin progress={setProgress} />
                 ) : (
                   <Navigate to="/home" />
