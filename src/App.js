@@ -21,6 +21,7 @@ import { useState } from "react";
 //react toastify imple
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Hood from "./components/hood/Hood";
 
 const App = () => {
   const [progress, setProgress] = useState(0);
@@ -64,7 +65,9 @@ const App = () => {
         pauseOnHover
         theme="light"
       />
+      <Hood />
       <Navbar />
+
       <Layout>
         <Routes>
           <Route path="/" element={<Welcome progress={setProgress} />} />

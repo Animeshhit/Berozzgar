@@ -28,7 +28,7 @@ const Welcome = ({ progress }) => {
               </NavLink>
             </div>
             <div className="right w-full sm:w-2/5 flex items-center justify-center">
-              <img className="mx-auto" src="./student.svg" alt="students" />
+              <img className="mx-auto" src="./study.svg" alt="students" />
             </div>
           </div>
         </div>
