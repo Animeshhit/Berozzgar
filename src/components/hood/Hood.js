@@ -2,8 +2,8 @@ const Hood = () => {
   return (
     <>
       <div className="w-full bg-zinc-800 text-white">
-        <div className="text-center">
-          <p className="py-3 text-xs capitalize">
+        <div className="text-center px-4">
+          <p className="py-3 text-xs capitalize leading-relaxed">
             Created With Love ❤️ by{" "}
             <a
               className="text-blue-300"

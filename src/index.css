@@ -30,3 +30,36 @@ body::before {
     ),
     repeating-linear-gradient(#bbbde155, #bbbde1);
 }
+
+/* Style the scrollbar track */
+  ::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Change to your desired track color */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change to your desired thumb color */
+  border-radius: 10px; /* Change to your desired border radius */
+}
+
+/* Optional: Hover effect for the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Change to your desired hover color */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Change to your desired track color */
+}
+
+/* Style the scrollbar thumb for webkit-based browsers */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change to your desired thumb color */
+  border-radius: 10px; /* Change to your desired border radius */
+}
+
+/* Style the scrollbar thumb for non-webkit browsers (Firefox, Edge) */
+/* Note: These styles may not work in older versions of Firefox */
+/* You can adjust the colors and other properties as needed */
+/* scrollbar-color: #888 #f1f1f1;
+scrollbar-width: thin; */

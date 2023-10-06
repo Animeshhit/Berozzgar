@@ -31,7 +31,7 @@ const Navbar = () => {
               <span className="font-bold text-sm sm:text-2xl text-zinc-800 dark:text-white">
                 Berozgar
                 <span className="text-xs ml-1 text-zinc-500 dark:text-gray-400">
-                  Engineerers
+                  Engineerers (v2.)
                 </span>
               </span>
             </NavLink>
