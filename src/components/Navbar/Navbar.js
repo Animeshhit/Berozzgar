@@ -83,7 +83,9 @@ const Navbar = () => {
                         <div className="truncate">{isAuth.userEmail}</div>
                       </div>
                       <ul
-                        className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        className={`py-2 ${
+                          isAuth.role == "ADMIN" ? "hidden" : ""
+                        } text-sm text-gray-700 dark:text-gray-200`}
                         aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
                       >
                         <li

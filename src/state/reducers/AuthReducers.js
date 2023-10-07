@@ -7,7 +7,6 @@ const INITIAL_STATE = {
 const AuthReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN:
-      console.log(action.payload);
       return action.payload;
     case REGISTER:
       return action.payload;

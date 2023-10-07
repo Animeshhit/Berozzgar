@@ -92,9 +92,7 @@ const App = () => {
                   </div>
                 </>
               ) : isAuth.auth ? (
-                isAuth.userEmail == "animeshkum723126@gmail.com" ||
-                isAuth.userEmail == "souravhit2226@gmail.com" ||
-                isAuth.userEmail == "saikatmalik234@gmail.com" ? (
+                isAuth.role == "ADMIN" ? (
                   <Admin progress={setProgress} />
                 ) : (
                   <Navigate to="/home" />
@@ -111,7 +109,6 @@ const App = () => {
           <Route path="/*" element={<Navigate to={"/"} />} />
         </Routes>
       </Layout>
-      
     </>
   );
 };

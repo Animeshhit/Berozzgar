@@ -6,6 +6,9 @@ import { useState } from "react";
 import { BaseUrl } from "../../config/apiConfig";
 import { toast } from "react-toastify";
 
+//google auth
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+
 export default function Register({ progress }) {
   const navigate = useNavigate();
   //dispatch of redux
@@ -41,7 +44,7 @@ export default function Register({ progress }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify({ ...userData, ProfileImage: "/profile.svg" }),
     });
     const RES = await REQ.json();
     if (REQ.status == 200) {
@@ -54,6 +57,54 @@ export default function Register({ progress }) {
       progress(50);
       toast.error(RES.message);
     }
+    progress(100);
+  };
+
+  //google
+  const RegisterWithGoogle = () => {
+    progress(40);
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    auth.useDeviceLanguage();
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        const cred = GoogleAuthProvider.credentialFromResult(result);
+        const token = cred.accessToken;
+        const user = result.user;
+        const { email, photoURL } = user;
+        progress(60);
+        const REQ = await fetch(`${BaseUrl}/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: email,
+            password: email,
+            ProfileImage: photoURL,
+          }),
+        });
+        progress(80);
+        const RES = await REQ.json();
+        if (REQ.status == 200) {
+          localStorage.setItem("Engine_Token", RES.token);
+          dispatch(RegisterUser({ auth: true, ...RES.user }));
+          progress(100);
+          toast.success("User Registration Done!! 🚀");
+          navigate("/");
+        } else {
+          progress(100);
+          toast.error(RES.message);
+        }
+      })
+      .catch((error) => {
+        progress(60);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        progress(80);
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
     progress(100);
   };
 
@@ -148,7 +199,8 @@ export default function Register({ progress }) {
               </button>
               <button
                 type="button"
-                className="hidden mt-6 py-2 w-full justify-center rounded-md bg-white flex items-center px-3 py-1.5 text-sm font-semibold leading-6 text-zinc-800 gap-2 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition"
+                onClick={RegisterWithGoogle}
+                className="mt-6 py-2 w-full justify-center rounded-md bg-white flex items-center px-3 py-1.5 text-sm font-semibold leading-6 text-zinc-800 gap-2 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition"
               >
                 <img className="w-5 h-5" src="/logo-google.svg" alt="google" />
                 Join With Google
