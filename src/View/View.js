@@ -31,8 +31,7 @@ const View = ({ Lprogress }) => {
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
       <div
         style={{
-          border: "1px solid rgba(0, 0, 0, 0.3)",
-          height: "100vh",
+          minHeight: "100vh",
         }}
       >
         {File && <Viewer fileUrl={File} />}
