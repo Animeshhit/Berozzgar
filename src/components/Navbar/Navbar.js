@@ -93,14 +93,42 @@ const Navbar = () => {
                             alert("Send Your Registered Email To Sourav Majee");
                           }}
                         >
-                          <a
-                            href="#"
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
+                          <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                             Be An Admin
                           </a>
                         </li>
                       </ul>
+
+                      <ul
+                        className={`py-2 ${
+                          isAuth.role != "ADMIN" ? "hidden" : ""
+                        } text-sm text-gray-700 dark:text-gray-200`}
+                        aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
+                      >
+                        <li>
+                          <NavLink
+                            to="/admin"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            onClick={() => {
+                              setIsOpen(false);
+                            }}
+                          >
+                            Upload Notes
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/dashboard"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            onClick={() => {
+                              setIsOpen(false);
+                            }}
+                          >
+                            Dashboard
+                          </NavLink>
+                        </li>
+                      </ul>
+
                       <div
                         className="py-2 cursor-pointer"
                         onClick={() => {

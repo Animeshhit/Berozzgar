@@ -22,6 +22,9 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Hood from "./components/hood/Hood";
+
+import Dashboard from "./pages/Admin/Dashboard";
+
 const App = () => {
   const [progress, setProgress] = useState(0);
   const isAuth = useSelector((state) => state.auth);
@@ -94,6 +97,28 @@ const App = () => {
               ) : isAuth.auth ? (
                 isAuth.role == "ADMIN" ? (
                   <Admin progress={setProgress} />
+                ) : (
+                  <Navigate to="/home" />
+                )
+              ) : (
+                <Navigate to="/home" />
+              )
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              isAuth.auth == null ? (
+                <>
+                  <div className="container mx-auto px-4 py-6">
+                    <h2 className="text-center my-12 capitalize text-zinc-800 text-xl">
+                      Loading Admin Info Please Wait...
+                    </h2>
+                  </div>
+                </>
+              ) : isAuth.auth ? (
+                isAuth.role == "ADMIN" ? (
+                  <Dashboard progress={setProgress} />
                 ) : (
                   <Navigate to="/home" />
                 )
