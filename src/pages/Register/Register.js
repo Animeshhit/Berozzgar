@@ -72,6 +72,7 @@ export default function Register({ progress }) {
         const token = cred.accessToken;
         const user = result.user;
         const { email, photoURL } = user;
+        toast.info("Please Wait...");
         progress(60);
         const REQ = await fetch(`${BaseUrl}/register`, {
           method: "POST",

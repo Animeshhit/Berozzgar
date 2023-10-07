@@ -64,6 +64,7 @@ export default function Login({ progress }) {
         const token = cred.accessToken;
         const user = result.user;
         const { email } = user;
+        toast.info("Please Wait...");
         progress(60);
         const REQ = await fetch(`${BaseUrl}/login`, {
           method: "POST",
