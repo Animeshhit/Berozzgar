@@ -31,7 +31,7 @@ const Hood = () => {
             slidesPerView={1}
             spaceBetween={30}
             autoplay={{
-              delay: 3500,
+              delay: 5500,
               disableOnInteraction: false,
             }}
             loop={true}
@@ -62,7 +62,7 @@ const Hood = () => {
                 return (
                   <SwiperSlide
                     key={msg._id}
-                    className="py-3 msg text-xs capitalize leading-relaxed capitalize text-white-800"
+                    className="py-3 text-xs capitalize leading-relaxed animate-pulse capitalize text-white-800"
                   >
                     ℹ️ℹ️{msg.message}
                   </SwiperSlide>
