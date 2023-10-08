@@ -71,7 +71,7 @@ const Hood = () => {
                     key={msg._id}
                     className="py-3 text-xs capitalize leading-relaxed capitalize text-cyan-400"
                   >
-                    ℹ️ℹ️{msg.message}
+                    {msg.message}
                   </SwiperSlide>
                 );
               })}
