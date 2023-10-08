@@ -69,7 +69,7 @@ const Hood = () => {
                 return (
                   <SwiperSlide
                     key={msg._id}
-                    className="py-3 text-xs capitalize leading-relaxed animate-pulse capitalize text-cyan-400"
+                    className="py-3 text-xs capitalize leading-relaxed capitalize text-cyan-400"
                   >
                     ℹ️ℹ️{msg.message}
                   </SwiperSlide>
