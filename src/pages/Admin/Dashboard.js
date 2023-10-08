@@ -11,7 +11,6 @@ function TruncateText({ text, limit }) {
   }
 }
 const UserData = (props) => {
-  console.log(props);
   const [position, setPosition] = useState(
     props.role == "ADMIN" ? true : false
   );
