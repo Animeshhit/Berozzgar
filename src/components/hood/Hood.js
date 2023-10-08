@@ -55,6 +55,13 @@ const Hood = () => {
                 href="https://www.linkedin.com/in/saikat-malik-56b1a0254/"
               >
                 Saikat Malik(EE-2)
+              </a>{" "}
+              &{" "}
+              <a
+                className="text-cyan-400"
+                href="https://www.linkedin.com/in/animesh-kumbhakar/"
+              >
+                Animesh Kumbhakar(EE-1)
               </a>
             </SwiperSlide>
             {messages &&
