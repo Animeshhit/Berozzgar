@@ -30,3 +30,11 @@ body::before {
     ),
     repeating-linear-gradient(#bbbde155, #bbbde1);
 }
+
+.msg b {
+  color: cyan;
+}
+
+.msg span {
+  color: rgb(229, 90, 90);
+}
