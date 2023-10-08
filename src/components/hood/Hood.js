@@ -14,7 +14,6 @@ const Hood = () => {
     try {
       let APIREQ = await fetch(`${BaseUrl}/hodmessages`);
       let APIRES = await APIREQ.json();
-      console.log(APIRES);
       setMessages(APIRES);
     } catch (err) {
       toast.error(err.message);

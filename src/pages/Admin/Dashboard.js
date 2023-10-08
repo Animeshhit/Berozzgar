@@ -95,7 +95,7 @@ const Dashboard = ({ progress }) => {
               <UserData />
             </>
           ) : (
-            users.map((user, index) => {
+            users.reverse().map((user, index) => {
               return (
                 <UserData
                   key={index}
