@@ -44,7 +44,6 @@ const App = () => {
     }
   };
   useEffect(() => {
-    console.clear();
     getCurrentUser();
   }, []);
   return (

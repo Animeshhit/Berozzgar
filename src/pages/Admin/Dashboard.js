@@ -11,9 +11,6 @@ function TruncateText({ text, limit }) {
   }
 }
 const UserData = (props) => {
-  const [position, setPosition] = useState(
-    props.role == "ADMIN" ? true : false
-  );
   return (
     <div className="w-full my-4 bg-white rounded-md sm:rounded-full shadow-lg flex py-3 flex-row px-3 sm:px-6 sm:gap-0 gap-4 items-center justify-between">
       <div className="left flex items-center gap-2 sm:gap-4">
@@ -34,10 +31,10 @@ const UserData = (props) => {
         {props.role ? (
           <div
             onClick={() => {
-              setPosition(!position);
+              props.changeAccess(props.id);
             }}
             className={`w-10 sm:w-12 flex transition ${
-              position ? "justify-end" : "justify-start"
+              props.role == "ADMIN" ? "justify-end" : "justify-start"
             } items-center px-0.5 h-4 sm:h-6 rounded-full bg-zinc-200`}
           >
             <div className="w-4 sm:w-5 cursor-pointer h-4 sm:h-5 rounded-full bg-blue-500"></div>
@@ -55,10 +52,12 @@ const UserData = (props) => {
 const Dashboard = ({ progress }) => {
   const [users, setUsers] = useState(null);
   const getUsers = async () => {
+    progress(30);
     try {
       let token = localStorage.getItem("Engine_Token");
       let APIREQ = await fetch(`${BaseUrl}/users?api_key=${token}`);
       let APIRES = await APIREQ.json();
+      progress(60);
       if (APIREQ.status == 200) {
         setUsers(APIRES);
       } else {
@@ -67,7 +66,35 @@ const Dashboard = ({ progress }) => {
     } catch (err) {
       toast.error("Hey Please Try Again Later");
     }
+    progress(100);
   };
+
+  const modifiAccess = async (id) => {
+    progress(30);
+    try {
+      let token = localStorage.getItem("Engine_Token");
+      if (!token) return;
+      let APIREQ = await fetch(
+        `${BaseUrl}/changeRole?api_key=${token}&id=${id}`,
+        {
+          method: "PUT",
+        }
+      );
+      let APIRES = await APIREQ.json();
+      progress(50);
+
+      if (APIREQ.status == 200) {
+        getUsers();
+        toast.success(APIRES.message);
+      } else {
+        toast.error(APIRES.message);
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+    progress(100);
+  };
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -95,13 +122,15 @@ const Dashboard = ({ progress }) => {
               <UserData />
             </>
           ) : (
-            users.reverse().map((user, index) => {
+            users.map((user, index) => {
               return (
                 <UserData
                   key={index}
+                  id={user._id}
                   profileImage={user.profileImage}
                   userEmail={user.userEmail}
                   role={user.role}
+                  changeAccess={modifiAccess}
                 />
               );
             })
