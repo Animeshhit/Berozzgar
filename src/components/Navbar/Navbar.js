@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../state/actions/action";
 import { toast } from "react-toastify";
+import Logo from "../../assets/Logo.svg";
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.auth);
@@ -28,12 +29,11 @@ const Navbar = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <NavLink to={"/"} className="logo">
-              <span className="font-bold text-sm sm:text-2xl text-zinc-800 dark:text-white">
-                Berozgar
-                <span className="text-xs ml-1 text-zinc-500 dark:text-gray-400">
-                  Engineerers
-                </span>
-              </span>
+              <img
+                style={{ width: "90px", objectFit: "cover" }}
+                src={Logo}
+                alt="Berozgar Engineerers"
+              />
             </NavLink>
             <div className="flex items-center gap-2">
               {isAuth.auth == null ? (
