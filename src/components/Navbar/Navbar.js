@@ -10,6 +10,17 @@ import { toast } from "react-toastify";
 import Logo from "../../assets/Logo.svg";
 
 const Navbar = () => {
+  function emailToUsername(email) {
+    // Extract the username from the email by removing everything after the '@' symbol
+    const username = email.split("@")[0];
+    return username;
+  }
+
+  // Example of how to use the function:
+  const userEmail = "example@email.com";
+  const username = emailToUsername(userEmail);
+  console.log(username); // This will log "example" to the console.
+
   const isAuth = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
@@ -56,6 +67,11 @@ const Navbar = () => {
                         src={isAuth.profileImage}
                         alt="user photo"
                       />
+                      <span className="text-xs px-1 capitalize">
+                        {isAuth.userName == null
+                          ? emailToUsername(isAuth.userEmail)
+                          : isAuth.userName}
+                      </span>
                       <svg
                         className="w-2.5 h-2.5 ml-2.5"
                         aria-hidden="true"
