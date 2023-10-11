@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full bg-white dark:bg-zinc-800 py-1.5">
+      <div className="w-full shadow-lg bg-white dark:bg-zinc-800 py-1.5">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <NavLink to={"/"} className="logo">
@@ -77,7 +77,7 @@ const Navbar = () => {
                       id="dropdownAvatarName"
                       className={`z-10 ${
                         isOpen ? "" : "hidden"
-                      } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute right-0 top-20 dark:bg-gray-700 dark:divide-gray-600`}
+                      } bg-white divide-y divide-gray-100 rounded-lg bg-[whitesmoke] shadow-lg w-44 absolute right-0 top-20 dark:bg-gray-700 dark:divide-gray-600`}
                     >
                       <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                         <div className="truncate">{isAuth.userEmail}</div>
