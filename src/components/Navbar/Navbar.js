@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full shadow-lg bg-white dark:bg-zinc-800 py-1.5">
+      <div className="w-full dark:bg-zinc-800 py-3">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <NavLink to={"/"} className="logo">
@@ -44,7 +44,7 @@ const Navbar = () => {
                     <button
                       id="dropdownAvatarNameButton"
                       data-dropdown-toggle="dropdownAvatarName"
-                      className="flex items-center text-xs sm:text-sm py-2 font-medium text-gray-900 rounded-full hover:text-zinc-800 dark:hover:text-blue-500 md:mr-0 dark:text-white"
+                      className="flex items-center text-xs sm:text-sm px-4 font-medium text-gray-900 rounded-md hover:text-zinc-800 dark:hover:text-blue-500 md:mr-0 dark:text-white"
                       type="button"
                       onClick={() => {
                         setIsOpen(!isOpen);
@@ -74,16 +74,22 @@ const Navbar = () => {
                     </button>
 
                     <div
-                      id="dropdownAvatarName"
-                      className={`z-10 ${
+                      className={`py-2 z-10 ${
                         isOpen ? "" : "hidden"
-                      } bg-white divide-y divide-gray-100 rounded-lg bg-[whitesmoke] shadow-lg w-44 absolute right-0 top-20 dark:bg-gray-700 dark:divide-gray-600`}
+                      } bg-white rounded-md shadow-xl w-48 absolute right-0 top-12`}
                     >
-                      <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                        <div className="truncate">{isAuth.userEmail}</div>
-                      </div>
+                      <NavLink
+                        to="/user/profile"
+                        className="px-4 flex items-center gap-2 hover:bg-zinc-200 py-2 text-sm text-zinc-500 dark:text-white"
+                      >
+                        <span className="material-symbols-outlined text-zinc-600">
+                          account_circle
+                        </span>
+                        <span className="text-zinc-800">Account</span>
+                        {/* <span>@{isAuth.userEmail}</span> */}
+                      </NavLink>
                       <ul
-                        className={`py-2 ${
+                        className={`${
                           isAuth.role == "ADMIN" ? "hidden" : ""
                         } text-sm text-gray-700 dark:text-gray-200`}
                         aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
@@ -93,44 +99,49 @@ const Navbar = () => {
                             alert("Send Your Registered Email To Sourav Majee");
                           }}
                         >
-                          <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                          <a className="block px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                             Be An Admin
                           </a>
                         </li>
                       </ul>
 
                       <ul
-                        className={`py-2 ${
+                        className={`${
                           isAuth.role != "ADMIN" ? "hidden" : ""
-                        } text-sm text-gray-700 dark:text-gray-200`}
-                        aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
+                        } text-sm text-zinc-800 `}
                       >
                         <li>
                           <NavLink
                             to="/admin"
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            className="flex items-center gap-2 py-2 px-4 hover:bg-zinc-200 transition dark:hover:bg-gray-600 dark:hover:text-white"
                             onClick={() => {
                               setIsOpen(false);
                             }}
                           >
-                            Upload Notes
+                            <span className="material-symbols-outlined text-zinc-600">
+                              publish
+                            </span>
+                            <span>New Note</span>
                           </NavLink>
                         </li>
                         <li>
                           <NavLink
                             to="/dashboard"
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            className="flex items-center gap-2 py-2 px-4 hover:bg-zinc-200 transition dark:hover:bg-gray-600 dark:hover:text-white"
                             onClick={() => {
                               setIsOpen(false);
                             }}
                           >
-                            Dashboard
+                            <span className="material-symbols-outlined text-zinc-600">
+                              dashboard
+                            </span>
+                            <span>Dashboard</span>
                           </NavLink>
                         </li>
                       </ul>
 
                       <div
-                        className="py-2 cursor-pointer"
+                        className="cursor-pointer"
                         onClick={() => {
                           let wantToLogOut = window.confirm(
                             "Are You Sure To Log Out ?"
@@ -148,9 +159,12 @@ const Navbar = () => {
                       >
                         <p
                           href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          className="flex border-t-1 py-2 items-center gap-2 px-4 text-sm text-zinc-800 hover:bg-zinc-200"
                         >
-                          Sign out
+                          <span className="material-symbols-outlined text-red-400">
+                            logout
+                          </span>
+                          <span className="text-red-500">Log Out</span>
                         </p>
                       </div>
                     </div>
@@ -160,7 +174,7 @@ const Navbar = () => {
                 <NavLink to={"/auth/login"}>
                   <button
                     type="button"
-                    className="py-2 sm:py-3 flex items-center justify-center gap-1 text-xs sm:text-sm bg-zinc-800 text-white sm:px-12 px-6 dark:text-white  dark:bg-white dark:text-zinc-800  text-white rounded-full transition"
+                    className="py-2 sm:py-3 flex items-center justify-center gap-1 text-xs sm:text-sm text-white sm:px-8 px-6 text-zinc-900 hover:text-zinc-600 transition rounded-md transition"
                   >
                     Log in
                     <span className="material-symbols-outlined">login</span>
