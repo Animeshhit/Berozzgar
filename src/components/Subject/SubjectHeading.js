@@ -59,7 +59,7 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
         >
           {data ? (
             data.length > 0 ? (
-              data.map((item, index) => {
+              data.reverse().map((item, index) => {
                 return (
                   <Subject
                     key={index}
