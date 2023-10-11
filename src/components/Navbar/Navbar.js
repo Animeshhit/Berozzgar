@@ -174,7 +174,7 @@ const Navbar = () => {
                 <NavLink to={"/auth/login"}>
                   <button
                     type="button"
-                    className="py-2 sm:py-3 flex items-center justify-center gap-1 text-xs sm:text-sm text-white sm:px-8 px-6 text-zinc-900 hover:text-zinc-600 transition rounded-md transition"
+                    className="py-2 sm:py-3 flex items-center justify-center gap-1 text-xs sm:text-sm text-white sm:px-8 px-0 text-zinc-900 hover:text-zinc-600 transition rounded-md transition"
                   >
                     Log in
                     <span className="material-symbols-outlined">login</span>
