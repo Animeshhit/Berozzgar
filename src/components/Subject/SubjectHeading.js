@@ -31,7 +31,7 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
       <div className="w-full my-4">
         <div
           onClick={openDropDown}
-          className="flex rounded-full bg-2 cursor-pointer shadow-lg items-center justify-between  py-3 px-4 bg-white gap-2"
+          className="flex rounded-md bg-2 cursor-pointer shadow-lg items-center justify-between  py-3 px-4 bg-white gap-2"
         >
           <div className="left_info flex items-center gap-2">
             <span class="material-symbols-outlined auto_stories">
@@ -59,7 +59,7 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
         >
           {data ? (
             data.length > 0 ? (
-              data.reverse().map((item, index) => {
+              data.map((item, index) => {
                 return (
                   <Subject
                     key={index}
