@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full shadow-lg bg-white dark:bg-zinc-800 py-3">
+      <div className="w-full shadow-lg bg-white dark:bg-zinc-800 py-1.5">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <NavLink to={"/"} className="logo">
