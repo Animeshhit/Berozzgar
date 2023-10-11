@@ -1,38 +1,45 @@
-const InputBox = (props) => {
-  return (
-    <>
-      <div>
-        <label htmlFor={props.Id} className="block ml-2 text-base">
-          {props.Label}
-        </label>
-        <input
-          disabled={props.Disabled}
-          className="py-2 block border-2 outline-none placeholder:capitalize mt-2 bg-white disabled:shadow-none shadow-lg disabled:bg-zinc-100 px-4 rounded-md w-full"
-          id={props.Id}
-          type={props.Type}
-          placeholder={props.PlaceHolder}
-        />
-      </div>
-    </>
-  );
-};
+// import Account from "../../assets/account.svg";
+// const Profile = () => {
+//   return (
+//     <>
+//       <div className="w-full my-12">
+//         <div className="container mx-auto px-4 flex items-start gap-4">
+//           <div className="left w-3/5">
+//             <div className="mb-12">
+//               <h3 className="text-base font-semibold leading-7 text-gray-900">
+//                 Account Information
+//               </h3>
+//               <p className="text-xs leading-6 text-gray-500">
+//                 Personal details and current year.
+//               </p>
+//             </div>
+//             <div className="">
+//               <div className="flex items-center">
+//                 <img src="" />
+//                 <button
+//                   type="button"
+//                   className="py-2 px-4 border-2 rounded-md capitalize"
+//                 >
+//                   change avater
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//           <img src={Account} alt="Edit Your Profile" className="w-2/5" />
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Profile;
 
 const Profile = () => {
   return (
     <>
-      <div className="w-full my-8">
-        <div className="container max-w-lg mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h3 className="text-base font-semibold leading-7 text-gray-900">
-              Account Information
-            </h3>
-            <p className="text-xs leading-6 text-gray-500">
-              Personal details and current year.
-            </p>
-          </div>
-          <div className=""></div>
-        </div>
-      </div>
+      <p className="text-center my-24">
+        Working on it.. wait for 2-3 hours it will ready soon
+      </p>
     </>
   );
 };

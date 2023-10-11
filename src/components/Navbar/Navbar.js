@@ -55,25 +55,24 @@ const Navbar = () => {
                     <button
                       id="dropdownAvatarNameButton"
                       data-dropdown-toggle="dropdownAvatarName"
-                      className="flex items-center text-xs sm:text-sm px-4 font-medium text-gray-900 rounded-md hover:text-zinc-800 dark:hover:text-blue-500 md:mr-0 dark:text-white"
+                      className="flex gap-3 items-center text-xs sm:text-sm pl-4 sm:px-4 font-medium text-gray-900 rounded-md hover:text-zinc-800 dark:hover:text-blue-500 md:mr-0 dark:text-white"
                       type="button"
                       onClick={() => {
                         setIsOpen(!isOpen);
                       }}
                     >
-                      <span className="sr-only">Open user menu</span>
                       <img
-                        className="w-8 h-8 mr-1 rounded-full object-cover"
+                        className="w-8 h-8 rounded-full object-cover"
                         src={isAuth.profileImage}
                         alt="user photo"
                       />
-                      <span className="text-xs px-1 capitalize">
+                      <span className="text-xs hidden sm:flex capitalize">
                         {isAuth.userName == null
                           ? emailToUsername(isAuth.userEmail)
                           : isAuth.userName}
                       </span>
                       <svg
-                        className="w-2.5 h-2.5 ml-2.5"
+                        className="w-2.5 h-2.5"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -115,11 +114,14 @@ const Navbar = () => {
                       >
                         <li
                           onClick={() => {
-                            alert("Send Your Registered Email To Sourav Majee");
+                            alert("contact us for admin access");
                           }}
                         >
-                          <a className="block px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                            Be An Admin
+                          <a className="block px-4 py-2 hover:bg-zinc-200 cursor-pointer flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <span class="material-symbols-outlined">
+                              shield_person
+                            </span>
+                            <span>Contribute</span>
                           </a>
                         </li>
                       </ul>
