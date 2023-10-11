@@ -79,6 +79,9 @@ const Navbar = () => {
                       } bg-white rounded-md shadow-xl w-48 absolute right-0 top-12`}
                     >
                       <NavLink
+                        onClick={() => {
+                          setIsOpen(false);
+                        }}
                         to="/user/profile"
                         className="px-4 flex items-center gap-2 hover:bg-zinc-200 py-2 text-sm text-zinc-500 dark:text-white"
                       >

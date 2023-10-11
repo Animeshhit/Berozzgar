@@ -1,7 +1,11 @@
-import React from "react";
-
 const Profile = () => {
-  return <div></div>;
+  return (
+    <>
+      <p className="text-center my-24">
+        Working on it.. wait for 2-3 hours it will ready soon
+      </p>
+    </>
+  );
 };
 
 export default Profile;
