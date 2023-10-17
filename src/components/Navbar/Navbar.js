@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import changeTheme from "../../helper";
 import { LIGHT, DARK } from "../../helper";
-import "./Navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 //redux
 import { useSelector, useDispatch } from "react-redux";
@@ -19,7 +18,6 @@ const Navbar = () => {
   // Example of how to use the function:
   const userEmail = "example@email.com";
   const username = emailToUsername(userEmail);
-  console.log(username); // This will log "example" to the console.
 
   const isAuth = useSelector((state) => state.auth);
   const navigate = useNavigate();

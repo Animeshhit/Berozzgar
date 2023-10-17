@@ -32,6 +32,9 @@ const View = ({ Lprogress }) => {
       <div
         style={{
           minHeight: "100vh",
+          maxWidth: "1100px",
+          margin: "0 auto",
+          marginTop: "2rem",
         }}
       >
         {File && <Viewer fileUrl={File} />}

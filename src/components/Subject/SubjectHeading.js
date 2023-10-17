@@ -11,7 +11,6 @@ const SubjectHeading = ({ name, sem, code, progress }) => {
       let APIREQ = await fetch(`${BaseUrl}/subject?code=${code}&sem=${sem}`);
       let APIRES = await APIREQ.json();
       setData(APIRES);
-      console.log(APIRES);
     } catch (err) {
       alert(err.message);
     }
