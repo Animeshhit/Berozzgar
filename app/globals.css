@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --primary-color: #2c2b2b;
+  --secondary-color: white;
+  --accent-color: #dbeab0;
+}
+
+body {
+  background-color: var(--primary-color);
+}
