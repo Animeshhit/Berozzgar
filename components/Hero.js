@@ -1,35 +1,39 @@
 import Image from "next/image";
-import HeroImage from "@/assets/HeroImage.svg";
+import HeroImage from "@/assets/HeroImage2.svg";
 import Link from "next/link";
 import ArrowLeftIcon from "@/assets/arrow-left.svg";
+
 const Hero = () => {
   return (
     <>
-      <div className="w-full my-20">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="left_content w-3/5">
-              <h1
-                style={{ lineHeight: "1.3" }}
-                className="text-white text-6xl font-bold"
-              >
-                Hey,“Empowering Aspiring{" "}
-                <span className="text-[#dbeab0]">Engineers”</span>
+      <div className="w-full mt-20">
+        <div className="container mx-auto px-4 md:px-0">
+          <div className="flex md:flex-row flex-col items-center justify-between">
+            <div className="left_content w-full md:w-1/2">
+              <h1 className="text-white text-3xl font-inter sm:text-4xl md:text-6xl font-bold">
+                Hey👋, “Empowering Aspiring{" "}
+                <span className="text-accent">Engineers”</span>
               </h1>
-              <p className="mt-3 text-xl text-gray-400 capitalize">
-                Unlock top-notch class notes and elevate your engineering
-                journey with Berozgar Engineer. Your path to success begins
-                here.
+              <p className="mt-3 text-gray-300 text-sm sm:text-base capitalize leading-relaxed">
+                Elevate your engineering journey with study resources, expert
+                advice, and motivation. Access class notes and achieve academic
+                excellence. Your one-stop destination for engineering success.
               </p>
               <Link
                 href="/get-started"
-                className="flex items-center mt-8 gap-2 bg-[#dbeab0] w-max py-3 px-6 rounded-full font-semibold hover:bg-white"
+                className="w-max flex gap-3 mt-8 sm:mt-10 py-2.5 hover:bg-white transition rounded-full font-semibold px-12 bg-accent"
               >
-                Let's Start
-                <Image src={ArrowLeftIcon} width={30} height={20} />
+                <span>Let's Start</span>
+                <Image src={ArrowLeftIcon} width={30} height={30} />
               </Link>
             </div>
-            <Image src={HeroImage} width={400} height={400} alt="Hero Image" />
+            <Image
+              className="hidden md:block"
+              src={HeroImage}
+              width={500}
+              height={500}
+              alt="Hero Image"
+            />
           </div>
         </div>
       </div>
