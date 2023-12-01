@@ -40,29 +40,29 @@ const Hood = () => {
             className="mySwiper"
             modules={[Autoplay]}
           >
-            <SwiperSlide className="py-3 text-xs capitalize leading-relaxed">
-              Created With Love ❤️ by{" "}
-              <a
-                className="text-yellow-400"
-                href="https://www.linkedin.com/in/sourav-majee/"
-              >
-                Sourav Majee(EE-2)
-              </a>{" "}
-              &{" "}
-              <a
-                className="text-blue-400"
-                href="https://www.linkedin.com/in/saikat-malik-56b1a0254/"
-              >
-                Saikat Malik(EE-2)
-              </a>{" "}
-              &{" "}
-              <a
-                className="text-cyan-400"
-                href="https://www.linkedin.com/in/animesh-kumbhakar/"
-              >
-                Animesh Kumbhakar(EE-1)
-              </a>
-            </SwiperSlide>
+              <SwiperSlide className="py-3 text-xs capitalize leading-relaxed">
+                Created With Love ❤️ by{" "}
+                <a
+                  className="text-yellow-400"
+                  href="https://www.linkedin.com/in/sourav-majee/"
+                >
+                  Sourav Majee(EE-2)
+                </a>{" "}
+                &{" "}
+                <a
+                  className="text-blue-400"
+                  href="https://www.linkedin.com/in/saikat-malik-56b1a0254/"
+                >
+                  Saikat Malik(EE-2)
+                </a>{" "}
+                &{" "}
+                <a
+                  className="text-cyan-400"
+                  href="https://www.linkedin.com/in/animesh-kumbhakar/"
+                >
+                  Animesh Kumbhakar(EE-1)
+                </a>
+              </SwiperSlide>
             {messages &&
               messages.map((msg, index) => {
                 return (

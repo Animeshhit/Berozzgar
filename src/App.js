@@ -23,8 +23,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Hood from "./components/hood/Hood";
 
-import Dashboard from "./pages/Admin/Dashboard";
 import Profile from "./pages/Profile/Profile";
+import Users from "./pages/Admin/Users";
 
 const App = () => {
   const [progress, setProgress] = useState(0);
@@ -116,7 +116,7 @@ const App = () => {
                 </>
               ) : isAuth.auth ? (
                 isAuth.role == "ADMIN" ? (
-                  <Dashboard progress={setProgress} />
+                  <Users progress={setProgress} />
                 ) : (
                   <Navigate to="/home" />
                 )
