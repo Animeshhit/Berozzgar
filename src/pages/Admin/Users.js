@@ -166,7 +166,7 @@ const Users = ({ progress }) => {
       <div className="w-full mt-12 mb-24">
         <div className="container mx-auto px-4">
           {/* sorting div  */}
-          <div className="main__sort__container flex w-full mb-6 items-center justify-start px-4">
+          <div className="main__sort__container flex w-full mb-6 items-center justify-start">
             <div className="sorting__container">
               <div
                 onClick={() => {
