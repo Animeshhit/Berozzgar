@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../state/actions/action";
 import { toast } from "react-toastify";
-import Logo from "../../assets/Logo.svg";
+// import Logo from "../../assets/Logo.svg";
 
 const Navbar = () => {
   function emailToUsername(email) {
@@ -39,8 +39,8 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <NavLink to={"/"} className="logo">
               <img
-                style={{ width: "90px", objectFit: "cover" }}
-                src={Logo}
+                style={{ width: "40px", objectFit: "cover" }}
+                src={"/Logo-new.svg"}
                 alt="Berozgar Engineerers"
               />
             </NavLink>
