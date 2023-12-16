@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../state/actions/action";
 import { toast } from "react-toastify";
-import LogoNewOhmByte from "../../assets/MainLogo.svg";
+import LogoNewOhmByte from "../../assets/LogoFinal.svg";
 
 const Navbar = () => {
   function emailToUsername(email) {
