@@ -24,7 +24,7 @@ const Root = ({ children }) => {
               </Link>
               <Link
                 href="/auth/register"
-                className="py-3 px-6 text-sm bg-accent rounded-full font-semibold flex items-center gap-2"
+                className="py-3 px-6 text-sm bg-accent rounded-full font-semibold hover:bg-white transition flex items-center gap-2"
               >
                 Sign up
                 <ion-icon className="text-xl" name="chevron-forward"></ion-icon>
