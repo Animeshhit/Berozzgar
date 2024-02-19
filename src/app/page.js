@@ -52,7 +52,7 @@ const Page = () => {
             </div>
             <div className="right__container relative block w-full sm:w-2/3 h-auto">
               <Image
-                src="/Test2.svg"
+                src="/Hero.svg"
                 alt="Welcome__image"
                 width={1000}
                 height={1000}
