@@ -3,6 +3,9 @@ import Link from "next/link";
 const Root = ({ children }) => {
   return (
     <>
+      <div className="text-center text-white bg-red-600 text-sm py-3 capitalize">
+        <p>Ea Toh Bass Trailer Hai 😉🚀</p>
+      </div>
       <header className="py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
