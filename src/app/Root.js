@@ -1,16 +1,34 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
+
 const Root = ({ children }) => {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+      console.log(e);
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   return (
     <>
-      <div className="text-center text-white bg-red-600 text-sm py-3 capitalize">
+      {/* <div className="text-center text-white bg-red-600 text-xs capitalize">
         <p>Ea Toh Bass Trailer Hai 😉🚀</p>
-      </div>
+      </div> */}
       <header className="py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="logo">
-              <div className="image__container relative w-10 h-10 sm:w-12 sm:h-12">
+              <div className="image__container relative w-10 h-10 sm:w-10 sm:h-10">
                 <Image src="/BELogo.svg" alt="Berozgar Engineers" fill={true} />
               </div>
             </div>
