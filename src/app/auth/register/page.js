@@ -1,12 +1,75 @@
+"use client";
+import { useDebugValue, useState } from "react";
 import Image from "next/image";
+import BaseUrl from "../../../config/apiConfig";
+import { useDispatch } from "react-redux";
+import { register } from "../../../redux/reducers/authReducer";
+import { useRouter } from "next/navigation";
+import generateUniqueDeviceInfo from "../../../helper/index";
 
 const Page = () => {
+  const [data, setData] = useState({
+    phone: "",
+    email: "",
+    password: "",
+  });
+
+  //dispatch system
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { phone, password } = data;
+    if (phone.length < 10 || phone.length > 10) {
+      alert("Phone Number is Invalid");
+      return;
+    }
+    if (password.length < 8) {
+      alert("Phone should be 8 letter long ");
+      return;
+    }
+    let deviceInfo = generateUniqueDeviceInfo();
+
+    localStorage.setItem("Device_Id", deviceInfo);
+
+    try {
+      let REQ = await fetch(`${BaseUrl}/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...data, device: deviceInfo }),
+      });
+      let RES = await REQ.json();
+      if (REQ.status == 201) {
+        localStorage.setItem("Auth_Token", RES.token);
+        dispatch(register(RES.user));
+        alert(RES.message);
+        router.replace("/");
+      } else {
+        alert(RES.message);
+        console.log(RES);
+      }
+    } catch (err) {
+      console.log(err);
+      alert(err.message);
+    }
+  };
+
   return (
     <>
       <section>
         <div className="container mx-auto px-4 mt-9 sm:mt-0">
           <div className="flex items-center justify-center gap-8">
-            <form className="left__container w-full sm:w-auto">
+            <form
+              className="left__container w-full sm:w-auto"
+              onSubmit={handleSubmit}
+            >
               <h2 className="text-white font-bold text-2xl sm:text-3xl text-center sm:text-left">
                 Create A New Account
               </h2>
@@ -24,6 +87,8 @@ const Page = () => {
                     id="phone"
                     name="phone"
                     type="number"
+                    onChange={handleChange}
+                    value={data.phone}
                     placeholder="8637058xxx"
                     required={true}
                   />
@@ -38,6 +103,8 @@ const Page = () => {
                   id="email"
                   name="email"
                   type="email"
+                  onChange={handleChange}
+                  value={data.email}
                   placeholder="username@gmail.com"
                   required={true}
                   className="w-full sm:w-[350px] text-white px-4 py-3 sm:py-2 rounded-md bg-zinc-800 border-2 outline-none border-gray-400"
@@ -53,6 +120,8 @@ const Page = () => {
                   name="password"
                   type="password"
                   placeholder="Password"
+                  onChange={handleChange}
+                  value={data.password}
                   required={true}
                   className="w-full sm:w-[350px] px-4 py-3 sm:py-2 text-white rounded-md outline-none border-2 border-gray-400 bg-zinc-800"
                 />

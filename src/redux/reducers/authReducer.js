@@ -23,8 +23,11 @@ export const auth = createSlice({
     login: (_, action) => {
       return { isAuth: true, user: action.payload };
     },
+    SignIn: (_, action) => {
+      return action.payload;
+    },
   },
 });
 
-export const { register, login } = auth.actions;
+export const { register, login, SignIn } = auth.actions;
 export default auth.reducer;

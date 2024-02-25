@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import NextTopLoader from "nextjs-toploader";
+import { ReduxProvider } from "../redux/Provider";
 
 const inter = Inter({ subsets: ["latin"], weight: ["500", "800"] });
 
@@ -16,8 +18,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Root>{children}</Root>
+        <ReduxProvider>
+          <NextTopLoader color="#0acf83" />
+          <Root>{children}</Root>
+        </ReduxProvider>
       </body>
+
       <Script
         type="module"
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
