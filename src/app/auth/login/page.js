@@ -7,6 +7,7 @@ import generateUniqueDeviceInfo from "../../../helper";
 import BaseUrl from "../../../config/apiConfig";
 import { login } from "../../../redux/reducers/authReducer";
 import { removeError } from "../../../redux/reducers/errorReducer";
+import Link from "next/link";
 
 const EmailType = "EMAIL";
 const PhoneType = "PHONE";
@@ -18,6 +19,8 @@ const Page = () => {
     phone: "",
     password: "",
   });
+
+  const [isPasswordIsVisiable, setIsPasswordIsVisiable] = useState(false);
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -138,18 +141,34 @@ const Page = () => {
               <label htmlFor="password" className="text-gray-400 block mb-2">
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={data.password}
-                onChange={handleChange}
-                placeholder="Password"
-                required={true}
-                className="w-full sm:w-[350px] px-4 py-3 sm:py-2 text-white rounded-md outline-none border-2 border-gray-400 bg-zinc-800"
-              />
+              <div className="relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={isPasswordIsVisiable ? "text" : "password"}
+                  value={data.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                  required={true}
+                  className="w-full sm:w-[350px] px-4 py-3 sm:py-2 text-white rounded-md outline-none border-2 border-gray-400 bg-zinc-800"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsPasswordIsVisiable((value) => !value);
+                  }}
+                  className="text-white absolute right-3 text-xl top-1/2 flex items-center justify-center border-none outline-none"
+                  style={{ transform: "translateY(-50%)" }}
+                >
+                  <ion-icon
+                    name={
+                      isPasswordIsVisiable ? "eye-off-outline" : "eye-outline"
+                    }
+                  ></ion-icon>
+                </button>
+              </div>
               <small className="text-white flex items-center justify-end mt-2 underline cursor-pointer">
-                Forgot Password
+                <Link href="/auth/forget-password">Forgot Password</Link>
               </small>
             </div>
             {/* submit button  */}

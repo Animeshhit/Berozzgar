@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import BaseUrl from "../config/apiConfig";
 
 // this component is made for the about section
 const CardForShow = (props) => {
@@ -26,6 +29,41 @@ const CardForShow = (props) => {
 };
 
 const Page = () => {
+  //getting contact form data
+  const [contactDetails, setContactDetails] = useState({
+    name: "",
+    email: "",
+    description: "",
+  });
+
+  //handleChange
+  const handleChange = (e) => {
+    setContactDetails({ ...contactDetails, [e.target.name]: e.target.value });
+  };
+
+  //onsubmit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (contactDetails.description.length < 10) {
+      return alert("message is too short");
+    }
+    try {
+      let REQ = await fetch(`${BaseUrl}/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactDetails),
+      });
+      let RES = await REQ.json();
+
+      alert(RES.message);
+      setContactDetails({ name: "", email: "", description: "" });
+    } catch (err) {
+      alert("something went wrong please try again later");
+    }
+  };
+
   return (
     <>
       {/* Hero Section  */}
@@ -91,7 +129,10 @@ const Page = () => {
               </div>
             </div>
             <div className="right__container w-full sm:w-1/2 flex items-center justify-end">
-              <div className="main__form w-full sm:w-3/4 bg-white py-4 px-4 rounded-md">
+              <form
+                className="main__form w-full sm:w-3/4 bg-white py-4 px-4 rounded-md"
+                onSubmit={handleSubmit}
+              >
                 <h2 className="text-2xl font-bold font-inter">Contact us</h2>
                 <p className="text-sm text-zinc-700 mt-1">
                   Feel Free to share anything we will contact you soon
@@ -106,7 +147,10 @@ const Page = () => {
                   <input
                     className="mt-2 py-3 px-4 focus:border-zinc-700 transition w-full text-sm border-2 border-zinc-300 outline-none rounded-md resize-none"
                     id="username"
-                    name="username"
+                    name="name"
+                    value={contactDetails.name}
+                    onChange={handleChange}
+                    required={true}
                   />
                 </div>
                 <div className="text-input__box mt-6">
@@ -119,7 +163,10 @@ const Page = () => {
                   <input
                     className="mt-2 py-3 px-4 focus:border-zinc-700 transition w-full text-sm border-2 border-zinc-300 outline-none rounded-md resize-none"
                     id="useremail"
-                    name="useremail"
+                    name="email"
+                    value={contactDetails.email}
+                    required={true}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="text-area__box">
@@ -133,6 +180,9 @@ const Page = () => {
                     className="mt-2 py-3 px-4 focus:border-zinc-700 transition w-full text-sm border-2 border-zinc-300 outline-none rounded-md resize-none h-32"
                     id="query"
                     name="description"
+                    value={contactDetails.description}
+                    required={true}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <button
@@ -141,7 +191,7 @@ const Page = () => {
                 >
                   submit
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
