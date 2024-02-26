@@ -1,13 +1,18 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import BaseUrl from "../config/apiConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { SignIn } from "../redux/reducers/authReducer";
 
 const Root = ({ children }) => {
+  const [error, setError] = useState({
+    error: false,
+    message: null,
+    type: "message",
+  });
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth);
   const loginIn = async (token) => {
@@ -33,10 +38,28 @@ const Root = ({ children }) => {
         }
       } else {
         dispatch(SignIn({ isAuth: false, user: null }));
-        console.log(RES);
+        if (REQ.status == 403) {
+          setError({
+            error: true,
+            message:
+              "Session expired, (Too Many Devices) please log in again for continued access.",
+            type: "message",
+          });
+        } else {
+          setError({
+            error: false,
+            message: null,
+            type: "message",
+          });
+        }
       }
     } catch (err) {
-      console.log(err);
+      setError({
+        error: true,
+        message:
+          "Sorry, something went wrong. You might be offline. Please try again later.",
+        type: "error",
+      });
       dispatch(SignIn({ isAuth: false, user: null }));
     }
   };
@@ -64,9 +87,17 @@ const Root = ({ children }) => {
   }, []);
   return (
     <>
-      {/* <div className="text-center text-white bg-red-600 text-xs capitalize">
-        <p>Ea Toh Bass Trailer Hai 😉🚀</p>
-      </div> */}
+      {error.error ? (
+        <div
+          className={`text-center text-white py-2 ${
+            error.type == "message" ? "bg-blue-600" : "bg-red-600 underline"
+          } text-xs capitalize `}
+        >
+          <p>{error.message}</p>
+        </div>
+      ) : (
+        ""
+      )}
       <header className="py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
