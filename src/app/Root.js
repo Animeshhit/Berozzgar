@@ -102,7 +102,7 @@ const Root = ({ children }) => {
           transform: Load ? "scale(1)" : "scale(6) translateY(-100vh)",
         }}
       >
-        <div className="text-center animate-spin">
+        <div className="text-center animate-pulse">
           <h3
             className={`text-white font-extrabold text-3xl ${styleScript.className}`}
           >
@@ -141,7 +141,32 @@ const Root = ({ children }) => {
               {isLoggedIn.isAuth == null ? (
                 <p className="text-white">Loading...</p>
               ) : isLoggedIn.isAuth ? (
-                <p className="text-white">{isLoggedIn.user.email}</p>
+                <>
+                  <ul className="flex items-center gap-5">
+                    <Link
+                      href="/profile"
+                      className="text-white text-4xl flex items-center justify-center"
+                    >
+                      {isLoggedIn.user.profileUrl ? (
+                        <Image
+                          src={isLoggedIn.user.profileUrl}
+                          alt={isLoggedIn.user.email}
+                          width={50}
+                          height={50}
+                        />
+                      ) : (
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                      )}
+                    </Link>
+                    <button
+                      type="button"
+                      className="flex items-center py-2.5 px-5 transition hover:bg-white gap-2 font-semibold rounded-full bg-accent rounded-fulll"
+                    >
+                      Log out
+                      <ion-icon name="log-out-outline"></ion-icon>
+                    </button>
+                  </ul>
+                </>
               ) : (
                 <>
                   {/* for not loggedIn User  */}
