@@ -1,20 +1,21 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import Lenis from "@studio-freight/lenis";
 import BaseUrl from "../config/apiConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { SignIn } from "../redux/reducers/authReducer";
+import {
+  errorMessage,
+  message,
+  removeError,
+} from "../redux/reducers/errorReducer";
 
 const Root = ({ children }) => {
-  const [error, setError] = useState({
-    error: false,
-    message: null,
-    type: "message",
-  });
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth);
+  const isError = useSelector((state) => state.error);
   const loginIn = async (token) => {
     try {
       let REQ = await fetch(`${BaseUrl}/auth`, {
@@ -39,27 +40,23 @@ const Root = ({ children }) => {
       } else {
         dispatch(SignIn({ isAuth: false, user: null }));
         if (REQ.status == 403) {
-          setError({
-            error: true,
-            message:
-              "Session expired, (Too Many Devices) please log in again for continued access.",
-            type: "message",
-          });
+          dispatch(
+            message({
+              message:
+                "Session expired, (Too Many Devices) please log in again for continued access.",
+            })
+          );
         } else {
-          setError({
-            error: false,
-            message: null,
-            type: "message",
-          });
+          dispatch(removeError());
         }
       }
     } catch (err) {
-      setError({
-        error: true,
-        message:
-          "Sorry, something went wrong. You might be offline. Please try again later.",
-        type: "error",
-      });
+      dispatch(
+        errorMessage({
+          message:
+            "Sorry, something went wrong. You might be offline. Please try again later.",
+        })
+      );
       dispatch(SignIn({ isAuth: false, user: null }));
     }
   };
@@ -85,15 +82,16 @@ const Root = ({ children }) => {
 
     requestAnimationFrame(raf);
   }, []);
+
   return (
     <>
-      {error.error ? (
+      {isError.error ? (
         <div
           className={`text-center text-white py-2 ${
-            error.type == "message" ? "bg-blue-600" : "bg-red-600 underline"
+            isError.type == "message" ? "bg-blue-600" : "bg-red-600 underline"
           } text-xs capitalize px-`}
         >
-          <p>{error.message}</p>
+          <p>{isError.message}</p>
         </div>
       ) : (
         ""

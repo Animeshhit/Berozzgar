@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../../redux/reducers/authReducer";
 import { useRouter } from "next/navigation";
 import generateUniqueDeviceInfo from "../../../helper/index";
+import { removeError } from "../../../redux/reducers/errorReducer";
 
 const Page = () => {
   const [data, setData] = useState({
@@ -49,6 +50,7 @@ const Page = () => {
       if (REQ.status == 201) {
         localStorage.setItem("Auth_Token", RES.token);
         dispatch(register(RES.user));
+        dispatch(removeError());
         alert(RES.message);
         router.replace("/");
       } else {

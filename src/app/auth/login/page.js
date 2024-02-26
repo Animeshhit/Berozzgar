@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import generateUniqueDeviceInfo from "../../../helper";
 import BaseUrl from "../../../config/apiConfig";
 import { login } from "../../../redux/reducers/authReducer";
+import { removeError } from "../../../redux/reducers/errorReducer";
 
 const EmailType = "EMAIL";
 const PhoneType = "PHONE";
@@ -69,6 +70,7 @@ const Page = () => {
       if (REQ.status == 200) {
         localStorage.setItem("Auth_Token", RES.token);
         dispatch(login(RES.user));
+        dispatch(removeError());
         alert(RES.message);
         router.replace("/");
       } else {
