@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
+import { Style_Script } from "next/font/google";
 import Link from "next/link";
-import { useEffect, useReducer } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import BaseUrl from "../config/apiConfig";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,10 +13,15 @@ import {
   removeError,
 } from "../redux/reducers/errorReducer";
 
+const styleScript = Style_Script({ subsets: ["latin"], weight: ["400"] });
+
 const Root = ({ children }) => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth);
   const isError = useSelector((state) => state.error);
+
+  const [Load, setLoad] = useState(true);
+
   const loginIn = async (token) => {
     try {
       let REQ = await fetch(`${BaseUrl}/auth`, {
@@ -58,6 +64,8 @@ const Root = ({ children }) => {
         })
       );
       dispatch(SignIn({ isAuth: false, user: null }));
+    } finally {
+      setLoad(false);
     }
   };
 
@@ -67,6 +75,7 @@ const Root = ({ children }) => {
       loginIn(token);
     } else {
       dispatch(SignIn({ isAuth: false, user: null }));
+      setLoad(false);
     }
   }, []);
 
@@ -85,6 +94,27 @@ const Root = ({ children }) => {
 
   return (
     <>
+      <div
+        className={`loader  fixed transition  top-0 left-0 right-0 bottom-0 bg-black flex items-center justify-center`}
+        style={{
+          zIndex: "200",
+          transitionDuration: "1.2s",
+          transform: Load ? "scale(1)" : "scale(6) translateY(-100vh)",
+        }}
+      >
+        <div className="text-center animate-pulse">
+          <h3
+            className={`text-white font-extrabold text-3xl ${styleScript.className}`}
+          >
+            Created & Designed <br /> By
+          </h3>
+          <h1
+            className={`text-accent font-extrabold text-4xl sm:text-6xl mt-3 italic`}
+          >
+            Animesh
+          </h1>
+        </div>
+      </div>
       {isError.error ? (
         <div
           className={`text-center text-white py-2 ${
