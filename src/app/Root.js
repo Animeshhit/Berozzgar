@@ -91,7 +91,7 @@ const Root = ({ children }) => {
         <div
           className={`text-center text-white py-2 ${
             error.type == "message" ? "bg-blue-600" : "bg-red-600 underline"
-          } text-xs capitalize py-2`}
+          } text-xs capitalize px-`}
         >
           <p>{error.message}</p>
         </div>
