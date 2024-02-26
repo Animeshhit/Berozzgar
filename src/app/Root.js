@@ -102,14 +102,14 @@ const Root = ({ children }) => {
           transform: Load ? "scale(1)" : "scale(6) translateY(-100vh)",
         }}
       >
-        <div className="text-center animate-pulse">
+        <div className="text-center animate-spin">
           <h3
             className={`text-white font-extrabold text-3xl ${styleScript.className}`}
           >
             Created & Designed <br /> By
           </h3>
           <h1
-            className={`text-accent font-extrabold text-4xl sm:text-6xl mt-3 italic`}
+            className={`text-accent font-extrabold text-4xl sm:text-6xl mt-3 italic uppercase`}
           >
             Animesh
           </h1>
@@ -141,7 +141,7 @@ const Root = ({ children }) => {
               {isLoggedIn.isAuth == null ? (
                 <p className="text-white">Loading...</p>
               ) : isLoggedIn.isAuth ? (
-                <p className="text-white">{isLoggedIn.user._id}</p>
+                <p className="text-white">{isLoggedIn.user.email}</p>
               ) : (
                 <>
                   {/* for not loggedIn User  */}
