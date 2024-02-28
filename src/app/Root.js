@@ -145,26 +145,22 @@ const Root = ({ children }) => {
                   <ul className="flex items-center gap-5">
                     <Link
                       href="/profile"
-                      className="text-white text-4xl flex items-center justify-center"
+                      className="text-gray-400 hover:text-white transition flex items-center gap-2 justify-center"
                     >
                       {isLoggedIn.user.profileUrl ? (
                         <Image
                           src={isLoggedIn.user.profileUrl}
                           alt={isLoggedIn.user.email}
-                          width={50}
-                          height={50}
+                          width={60}
+                          height={60}
                         />
                       ) : (
-                        <ion-icon name="person-circle-outline"></ion-icon>
+                        <ion-icon
+                          name="person-circle-outline"
+                          style={{ fontSize: "2rem" }}
+                        ></ion-icon>
                       )}
                     </Link>
-                    <button
-                      type="button"
-                      className="flex items-center py-2.5 px-5 transition hover:bg-white gap-2 font-semibold rounded-full bg-accent rounded-fulll"
-                    >
-                      Log out
-                      <ion-icon name="log-out-outline"></ion-icon>
-                    </button>
                   </ul>
                 </>
               ) : (
