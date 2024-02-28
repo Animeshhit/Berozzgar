@@ -1,7 +1,10 @@
 const Page = () => {
   return (
     <>
-      <h3>Hello World</h3>
+      <h3 className="text-white font-bold text-3xl text-center mt-8">
+        Kaam Chalu Hai Meri Jaan 🔥🔥 (From{" "}
+        <span className="text-accent">Animesh</span>)
+      </h3>
     </>
   );
 };
