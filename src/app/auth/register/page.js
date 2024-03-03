@@ -7,6 +7,7 @@ import { register } from "../../../redux/reducers/authReducer";
 import { useRouter } from "next/navigation";
 import generateUniqueDeviceInfo from "../../../helper/index";
 import { removeError } from "../../../redux/reducers/errorReducer";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const [data, setData] = useState({
@@ -15,6 +16,9 @@ const Page = () => {
     password: "",
   });
 
+  //for button status
+
+  const [disabled, setIsDisabled] = useState(false);
   const [isPasswordIsVisiable, setIsPasswordIsVisiable] = useState(false);
 
   //dispatch system
@@ -29,11 +33,11 @@ const Page = () => {
     e.preventDefault();
     const { phone, password } = data;
     if (phone.length < 10 || phone.length > 10) {
-      alert("Phone Number is Invalid");
+      toast.warn("Phone Number is Invalid");
       return;
     }
     if (password.length < 8) {
-      alert("Phone should be 8 letter long ");
+      toast.warn("Phone should be 8 letter long ");
       return;
     }
     let deviceInfo = generateUniqueDeviceInfo();
@@ -41,6 +45,7 @@ const Page = () => {
     localStorage.setItem("Device_Id", deviceInfo);
 
     try {
+      setIsDisabled(true);
       let REQ = await fetch(`${BaseUrl}/register`, {
         method: "POST",
         headers: {
@@ -53,15 +58,17 @@ const Page = () => {
         localStorage.setItem("Auth_Token", RES.token);
         dispatch(register(RES.user));
         dispatch(removeError());
-        alert(RES.message);
+        toast.success(RES.message);
         router.replace("/");
       } else {
-        alert(RES.message);
+        toast.info(RES.message);
         console.log(RES);
       }
     } catch (err) {
       console.log(err);
-      alert(err.message);
+      toast.error(err.message);
+    } finally {
+      setIsDisabled(false);
     }
   };
 
@@ -149,9 +156,10 @@ const Page = () => {
               {/* submit button  */}
               <button
                 type="submit"
+                disabled={disabled}
                 className="w-full sm:w-[350px] mt-8 bg-accent py-3 px-4 rounded-md font-semibold transition hover:bg-white"
               >
-                Sign up
+                {disabled ? "Loading..." : "Sign up"}
               </button>
             </form>
             <div className="right__container sm:block hidden">

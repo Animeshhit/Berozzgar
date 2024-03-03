@@ -1,5 +1,4 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -8,12 +7,15 @@ import BaseUrl from "../../../config/apiConfig";
 import { login } from "../../../redux/reducers/authReducer";
 import { removeError } from "../../../redux/reducers/errorReducer";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const EmailType = "EMAIL";
 const PhoneType = "PHONE";
 
 const Page = () => {
   const [type, setType] = useState(PhoneType);
+  //for button status
+  const [isDisabled, setIsDisabled] = useState(false);
   const [data, setData] = useState({
     email: "",
     phone: "",
@@ -44,21 +46,20 @@ const Page = () => {
 
     if (type == PhoneType) {
       if (phone.length < 10 || phone.length > 10) {
-        alert("Invalid Phone Number");
+        toast.warn("Invalid phone number.");
         return;
       }
     }
 
     if (password.length < 8) {
-      alert("Password should be 8 letter long ");
+      toast.warn("Password should be 8 letter long ");
       return;
     }
 
     let deviceInfo = generateUniqueDeviceInfo();
     localStorage.setItem("Device_Id", deviceInfo);
-
     try {
-      console.log(`${BaseUrl}/login/${type == EmailType ? "email" : "phone"}`);
+      setIsDisabled(true);
       let REQ = await fetch(
         `${BaseUrl}/login/${type == EmailType ? "email" : "phone"}`,
         {
@@ -74,15 +75,16 @@ const Page = () => {
         localStorage.setItem("Auth_Token", RES.token);
         dispatch(login(RES.user));
         dispatch(removeError());
-        alert(RES.message);
+        toast.success("success");
         router.replace("/");
       } else {
-        alert(RES.message);
-        console.log(RES);
+        toast.info(RES.message);
       }
     } catch (err) {
       console.log(err);
-      alert(err.message);
+      toast.error(err.message);
+    } finally {
+      setIsDisabled(false);
     }
   };
 
@@ -174,9 +176,10 @@ const Page = () => {
             {/* submit button  */}
             <button
               type="submit"
+              disabled={isDisabled}
               className="w-full sm:w-[350px] mt-8 bg-accent py-3 px-4 rounded-md font-semibold transition hover:bg-white"
             >
-              Log in
+              {isDisabled ? "Loading..." : "Log in"}
             </button>
             <p className="text-gray-400 text-center font-semibold mt-4">OR</p>
             <p

@@ -81,7 +81,7 @@ const Page = () => {
                 excellence. Your one-stop destination for engineering success.
               </p>
               <Link
-                href="/"
+                href="/get-started"
                 className="mt-8 flex items-center bg-accent py-3 px-6 rounded-full w-max gap-3 font-bold transition hover:bg-white mx-auto sm:mx-0"
               >
                 Let's Study

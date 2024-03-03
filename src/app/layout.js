@@ -3,6 +3,8 @@ import "./globals.css";
 import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import { ReduxProvider } from "../redux/Provider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"], weight: ["500", "800"] });
 
@@ -18,6 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ToastContainer />
         <ReduxProvider>
           <NextTopLoader color="#0acf83" />
           <Root>{children}</Root>
