@@ -81,3 +81,78 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.afterDot {
+  position: relative;
+}
+
+.afterDot::before {
+  content: "";
+  position: absolute;
+  right: -205px;
+  transition: 0.6s ease;
+  transform: scale(0);
+  transform-origin: left;
+  width: 205px;
+  height: 3px;
+  background: #0acf83;
+}
+
+.afterDotactive::before {
+  transform: scale(1);
+}
+
+.gap-200 {
+  gap: 200px;
+}
+
+.dot {
+  opacity: 0;
+  transition: 0.2s ease;
+  position: relative;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 3px;
+  background: #0acf83;
+  transform: scale(0);
+  transform-origin: left;
+  transition: 0.3s ease;
+}
+
+.dot-one::before,
+.dot-two::before,
+.dot-three::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100px;
+  background: #0acf83;
+  transform: scale(0);
+  transform-origin: top;
+  transition: 0.3s ease;
+  transition-delay: 0.3s;
+}
+
+.active {
+  opacity: 1;
+}
+
+.active::before,
+.active::after {
+  transform: scale(1);
+}
+
+.buttonActive {
+  transition: 0.3s ease;
+  transition-delay: 0.5s;
+  background-color: #0acf83;
+}
