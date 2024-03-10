@@ -127,7 +127,7 @@ const Page = () => {
       </div>
       {/* for mobile or tablet user  */}
 
-      <div className="container px-4 mx-auto mt-14">
+      <div className="container px-8 mx-auto mt-20 block md:hidden">
         <Link
           href="/year/first"
           data-year="1"
