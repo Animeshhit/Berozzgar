@@ -95,7 +95,7 @@ body {
   transform-origin: left;
   width: 205px;
   height: 3px;
-  background: #0acf83;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .afterDotactive::before {
@@ -110,6 +110,8 @@ body {
   opacity: 0;
   transition: 0.2s ease;
   position: relative;
+  background: white;
+  box-shadow: 0px 0px 2px 3px rgba(255, 255, 255, 0.3);
 }
 
 .dot::after {
@@ -119,7 +121,7 @@ body {
   transform: translateY(-50%);
   width: 120px;
   height: 3px;
-  background: #0acf83;
+  background: rgba(255, 255, 255, 0.2);
   transform: scale(0);
   transform-origin: left;
   transition: 0.3s ease;
@@ -135,7 +137,7 @@ body {
   transform: translateX(-50%);
   width: 3px;
   height: 100px;
-  background: #0acf83;
+  background: rgba(255, 255, 255, 0.2);
   transform: scale(0);
   transform-origin: top;
   transition: 0.3s ease;
@@ -155,4 +157,27 @@ body {
   transition: 0.3s ease;
   transition-delay: 0.5s;
   background-color: #0acf83;
+}
+
+.padding-x {
+  animation: slide 0.8s 0.3s ease-in-out forwards;
+}
+
+@keyframes slide {
+  0% {
+    padding-inline: 24px;
+  }
+  100% {
+    padding-inline: 100px;
+  }
+}
+
+.icon::after {
+  content: attr(data-year);
+  position: absolute;
+  left: 20%;
+  font-size: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.3);
 }
