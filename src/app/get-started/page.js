@@ -127,7 +127,7 @@ const Page = () => {
       </div>
       {/* for mobile or tablet user  */}
 
-      <div className="container px-8 mx-auto mt-20 block md:hidden">
+      <div className="container px-8 mx-auto mt-36 block md:hidden">
         <Link
           href="/year/first"
           data-year="1"
@@ -138,21 +138,21 @@ const Page = () => {
         <Link
           href="/year/first"
           data-year="2"
-          className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-5  icon relative"
+          className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-12  icon relative"
         >
           Second Year
         </Link>
         <Link
           href="/year/first"
           data-year="3"
-          className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-5  icon relative"
+          className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-12  icon relative"
         >
           Third Year
         </Link>
         <Link
           href="/year/first"
           data-year="4"
-          className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-5  icon relative"
+          className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-12  icon relative"
         >
           Fourth Year
         </Link>
