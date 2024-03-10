@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import BaseUrl from "../config/apiConfig";
+import { toast } from "react-toastify";
 
 // this component is made for the about section
 const CardForShow = (props) => {
@@ -36,6 +37,8 @@ const Page = () => {
     description: "",
   });
 
+  const [contactBtn, setContactBtn] = useState(false);
+
   //handleChange
   const handleChange = (e) => {
     setContactDetails({ ...contactDetails, [e.target.name]: e.target.value });
@@ -47,7 +50,9 @@ const Page = () => {
     if (contactDetails.description.length < 10) {
       return alert("message is too short");
     }
+
     try {
+      setContactBtn(true);
       let REQ = await fetch(`${BaseUrl}/contact`, {
         method: "POST",
         headers: {
@@ -57,10 +62,12 @@ const Page = () => {
       });
       let RES = await REQ.json();
 
-      alert(RES.message);
+      toast.success(RES.message);
       setContactDetails({ name: "", email: "", description: "" });
     } catch (err) {
-      alert("something went wrong please try again later");
+      toast.error("something went wrong please try again later");
+    } finally {
+      setContactBtn(false);
     }
   };
 
@@ -187,9 +194,12 @@ const Page = () => {
                 </div>
                 <button
                   type="submit"
-                  className="mt-5 py-3 px-4 w-full text-white bg-primary capitalize rounded-md hover:bg-zinc-600 transition"
+                  disabled={contactBtn}
+                  className={`mt-5 py-3 ${
+                    contactBtn ? "bg-zinc-600" : "bg-zinc-800"
+                  } px-4 w-full text-white capitalize rounded-md hover:bg-zinc-600 transition`}
                 >
-                  submit
+                  {contactBtn ? "Sending message..." : "submit"}
                 </button>
               </form>
             </div>
