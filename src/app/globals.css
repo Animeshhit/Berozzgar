@@ -181,3 +181,12 @@ body {
   transform: translateY(-50%);
   color: rgba(0, 0, 0, 0.3);
 }
+
+.char {
+  display: inline-block;
+  transform: scale(0);
+}
+/*
+.line {
+  text-align: center;
+} */
