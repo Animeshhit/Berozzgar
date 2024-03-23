@@ -94,7 +94,11 @@ const Root = ({ children }) => {
   }, []);
 
   useEffect(() => {
-   
+    gsap.to("#header", {
+      y: 0,
+      duration: 1,
+      ease: "bounce",
+    });
   }, []);
 
   return (
@@ -131,7 +135,7 @@ const Root = ({ children }) => {
       ) : (
         ""
       )} */}
-      <header className="py-4">
+      <header id="header" className="py-4 -translate-y-full">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="logo">
@@ -144,7 +148,7 @@ const Root = ({ children }) => {
             </div>
             <nav className="flex items-center">
               {isLoggedIn.isAuth == null ? (
-                <p className="text-white">Loading...</p>
+                <p className="py-4 rounded-full animate-pulse px-6 bg-gray-300 w-24 "></p>
               ) : isLoggedIn.isAuth ? (
                 <>
                   <ul className="flex items-center gap-5">
