@@ -75,7 +75,7 @@ const Page = () => {
   };
   // for the shake of animation
   useEffect(() => {
-    // const text = new SplitType("#header_text");
+    //  this code section is for header section only
 
     let tl = gsap.timeline();
     tl.to("#header_text", {
@@ -98,6 +98,13 @@ const Page = () => {
         duration: 1,
         ease: "power2.in",
       });
+
+    // this code section is for contact section
+    // gsap.to("#contact__left", {
+    //   scrollTrigger: "#contact__left",
+    //   x: 0,
+    //   duration: 2,
+    // });
   }, []);
 
   return (
@@ -151,7 +158,10 @@ const Page = () => {
       <div id="contact" className="w-full bg-black mt-28 py-24">
         <div className="container mx-auto px-4">
           <div className="flex items-center sm:flex-row flex-col sm:gap-0 gap-14">
-            <div className="left__container w-full sm:w-1/2">
+            <div
+              id="contact__left"
+              className="left__container w-full sm:w-1/2"
+            >
               <h2 className="text-3xl text-white sm:text-4xl font-inter font-bold">
                 Any <span className="text-accent">query</span> or Any{" "}
                 <span className="text-accent">Questions !</span> Let’s{" "}
