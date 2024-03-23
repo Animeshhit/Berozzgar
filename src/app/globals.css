@@ -190,3 +190,29 @@ body {
 .line {
   text-align: center;
 } */
+
+.mySwiper {
+  /* border: 2px solid white; */
+  height: 200px;
+  margin-top: 2rem;
+}
+
+.swiper-slide {
+  background: black;
+  border-radius: 8px;
+  border: 2px solid white;
+  padding: 1.5rem;
+  transition: 0.3s ease border-color;
+  overflow: hidden;
+  /* 0acf83 */
+}
+
+.swiper-slide:hover {
+  border-color: var(--accent-color);
+}
+
+.card_svg {
+  position: absolute;
+  right: -40%;
+  bottom: -60%;
+}

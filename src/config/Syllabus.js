@@ -1,4 +1,4 @@
-export const Syllabus = {
+const Syllabus = {
   1: {
     1: {
       Theory: [
@@ -328,3 +328,5 @@ export const Syllabus = {
     },
   },
 };
+
+export default Syllabus;

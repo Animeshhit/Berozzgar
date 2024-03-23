@@ -53,7 +53,7 @@ const Page = () => {
                 } w-5 h-5  rounded-full`}
               ></div>
               <Link
-                href="/year/first"
+                href="/year/1"
                 className={`bg-zinc-800 py-3 rounded-full px-4 transition-all duration-150 block ${
                   animation.first ? "opacity-1" : "opacity-0"
                 } text-xl font-bold ${
@@ -72,7 +72,7 @@ const Page = () => {
                 } w-5 h-5 rounded-full`}
               ></div>
               <Link
-                href="/year/first"
+                href="/year/2"
                 className={`bg-zinc-800 py-3 rounded-full px-4 transition-all duration-150 block ${
                   animation.second ? "opacity-1" : "opacity-0"
                 } text-xl font-bold ${
@@ -91,7 +91,7 @@ const Page = () => {
                 } w-5 h-5 rounded-full`}
               ></div>
               <Link
-                href="/year/first"
+                href="/year/3"
                 className={`bg-zinc-800 py-3 rounded-full px-4 transition-all duration-150 block ${
                   animation.third ? "opacity-1" : "opacity-0"
                 } text-xl font-bold ${
@@ -110,7 +110,7 @@ const Page = () => {
                 } w-5 h-5 rounded-full`}
               ></div>
               <Link
-                href="/year/first"
+                href="/year/4"
                 className={`bg-zinc-800 py-3 rounded-full px-4 transition-all duration-150 block ${
                   animation.last ? "opacity-1" : "opacity-0"
                 } text-xl font-bold ${
