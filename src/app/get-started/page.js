@@ -129,28 +129,28 @@ const Page = () => {
 
       <div className="container px-8 mx-auto mt-24 block md:hidden">
         <Link
-          href="/year/first"
+          href="/year/1"
           data-year="1"
           className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold  icon relative"
         >
           First Year
         </Link>
         <Link
-          href="/year/first"
+          href="/year/2"
           data-year="2"
           className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-12  icon relative"
         >
           Second Year
         </Link>
         <Link
-          href="/year/first"
+          href="/year/3"
           data-year="3"
           className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-12  icon relative"
         >
           Third Year
         </Link>
         <Link
-          href="/year/first"
+          href="/year/4"
           data-year="4"
           className="py-3 px-4 bg-accent max-w-sm block mx-auto  w-full rounded-full text-center font-semibold mt-12  icon relative"
         >

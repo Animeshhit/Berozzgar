@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import Syllabus from "../../../config/Syllabus";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,12 +12,12 @@ import "swiper/css/scrollbar";
 export default function Page({ params }) {
   const { id } = params;
   const subjects = Syllabus[params.id];
-  console.log(subjects);
+
   return (
     <>
       <section>
         <div className="container mx-auto px-4 py-12">
-          <h2 className="text-white capitalize text-3xl font-bold flex items-center gap-3">
+          <h2 className="text-white capitalize text-xl sm:text-3xl font-bold flex items-center gap-3">
             <ion-icon
               style={{ color: "#0acf83" }}
               name="book-outline"
@@ -39,7 +38,9 @@ export default function Page({ params }) {
             }}
             spaceBetween={40}
             modules={[Scrollbar]}
-            slidesPerView={3}
+            slidesPerView={
+              window.innerWidth > 950 ? 3 : window.innerWidth > 500 ? 2 : 1
+            }
             className="mySwiper"
           >
             {subjects[1].Theory.map((items, index) => {
@@ -65,7 +66,7 @@ export default function Page({ params }) {
               );
             })}
           </Swiper>
-          <h2 className="text-white capitalize text-3xl font-bold flex items-center gap-3 mt-12">
+          <h2 className="text-white capitalize text-xl sm:text-3xl font-bold flex items-center gap-3 mt-12">
             <ion-icon
               style={{ color: "#0acf83" }}
               name="book-outline"
@@ -86,7 +87,9 @@ export default function Page({ params }) {
             }}
             spaceBetween={40}
             modules={[Scrollbar]}
-            slidesPerView={3}
+            slidesPerView={
+              window.innerWidth > 950 ? 3 : window.innerWidth > 500 ? 2 : 1
+            }
             className="mySwiper"
           >
             {subjects[2].Theory.map((items, index) => {
